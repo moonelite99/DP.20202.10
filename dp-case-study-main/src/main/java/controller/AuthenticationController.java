@@ -59,7 +59,7 @@ public class AuthenticationController extends BaseController {
 
 
 /*
-/    common coupling vì hàm logout sử dụng chung global data từ class SessionInformation
+/    common coupling vì hàm logout sử dụng chung global data từ class SessionInformation là mainUser va expiredTime
  */
     public void logout() {
         SessionInformation.mainUser = null;

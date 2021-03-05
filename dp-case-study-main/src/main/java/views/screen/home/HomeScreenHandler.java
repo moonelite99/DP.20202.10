@@ -110,9 +110,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         }
     }
 
-/*
-/ common coupling vì phương thức này sử dụng biến global     CART_SCREEN_PATH của lớp ViewsConfig
- */
+
     protected void setupFunctionality() throws Exception {
 
         aimsImage.setOnMouseClicked(e -> {
@@ -138,7 +136,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     }
 
 /*
-/  common coupling vì phương thức show() sử dụng biến global của lớp    SessionInformation
+/  common coupling vì phương thức show() sử dụng biến global của lớp    SessionInformation là cartInstance
  */
     @Override
     public void show() {
@@ -153,9 +151,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         numMediaInCart.setText(String.valueOf(SessionInformation.cartInstance.getListMedia().size()) + " media");
         super.show();
     }
-    /*
-    / common coupling vì phương thức này sử dụng biến global     IMAGE_PATH của lớp ViewsConfig
-     */
+
     public void setImage() {
         // fix image path caused by fxml
         File file1 = new File(ViewsConfig.IMAGE_PATH + "/" + "Logo.png");
@@ -259,9 +255,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         }
     }
 
-    /*
-        / common coupling vì phương thức này sử dụng biến global     LOGIN_SCREEN_PATH của lớp ViewsConfig
-    */
+
     @FXML
     void redirectLoginScreen(MouseEvent event) {
         try {

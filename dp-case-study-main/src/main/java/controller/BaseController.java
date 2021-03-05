@@ -18,7 +18,7 @@ public class BaseController {
      * @return CartMedia or null
      */
 /*
-/   common coupling vì hàm checkMediaIncart sử dụng data global của class SessionInformation
+/   common coupling vì hàm checkMediaIncart sử dụng data global của class SessionInformation là cartInstance
  */
     public CartItem checkMediaInCart(Media media){
         return SessionInformation.cartInstance.checkMediaInCart(media);
