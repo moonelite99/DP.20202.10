@@ -1,0 +1,4 @@
+
+# User-specific stuff:
+dp-case-study-main/.idea/*
+dp-case-study-main/target/*

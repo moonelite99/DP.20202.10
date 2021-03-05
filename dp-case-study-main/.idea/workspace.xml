@@ -3,6 +3,7 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+<<<<<<< HEAD
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -104,12 +105,19 @@
       <change beforePath="$PROJECT_DIR$/target/classes/views/screen/payment/ResultScreenHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/screen/payment/ResultScreenHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/views/screen/popup/PopupScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/screen/popup/PopupScreen.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/views/screen/shipping/ShippingScreenHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/screen/shipping/ShippingScreenHandler.class" afterDir="false" />
+=======
+  <component name="ChangeListManager">
+    <list default="true" id="d5cdb911-4881-4355-9a1d-29aac69e3944" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SessionInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SessionInformation.java" afterDir="false" />
+>>>>>>> a8dfee8a29cda87252f58965b80351a0e2b366c8
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
   </component>
@@ -126,6 +134,11 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
+=======
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+>>>>>>> a8dfee8a29cda87252f58965b80351a0e2b366c8
   <component name="ProjectId" id="1pHgjkE0WHSbjBNiV0VmSbG36Co" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -138,7 +151,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/win/javafx-sdk-15/lib" />
+>>>>>>> a8dfee8a29cda87252f58965b80351a0e2b366c8
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -152,6 +169,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
+=======
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+>>>>>>> a8dfee8a29cda87252f58965b80351a0e2b366c8
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -165,12 +196,18 @@
       <option name="presentableId" value="Default" />
       <updated>1614845566093</updated>
       <workItem from="1614845569374" duration="48000" />
+<<<<<<< HEAD
       <workItem from="1614930737323" duration="3801000" />
+=======
+      <workItem from="1614930737323" duration="3874000" />
+      <workItem from="1614942643338" duration="476000" />
+>>>>>>> a8dfee8a29cda87252f58965b80351a0e2b366c8
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+<<<<<<< HEAD
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -209,5 +246,7 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="477" y="145" width="581" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1614946435405" />
+=======
+>>>>>>> a8dfee8a29cda87252f58965b80351a0e2b366c8
   </component>
 </project>

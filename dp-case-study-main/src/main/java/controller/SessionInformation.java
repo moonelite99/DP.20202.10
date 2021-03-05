@@ -16,5 +16,5 @@ public class SessionInformation {
     public static User mainUser;
     public static Cart cartInstance = new Cart();
     public static LocalDateTime expiredTime;
-
+// Common Coupling do sử dụng các biến global
 }
