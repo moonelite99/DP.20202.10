@@ -61,6 +61,9 @@ public class AuthenticationController extends BaseController {
 /*
 /    common coupling vì hàm logout sử dụng chung global data từ class SessionInformation là mainUser va expiredTime
  */
+/*
+/  concidental cohesion vì module này làm nhiệm vụ xác thực còn chức năng logout nên để ra 1 module riêng
+ */
     public void logout() {
         SessionInformation.mainUser = null;
         SessionInformation.expiredTime = null;
