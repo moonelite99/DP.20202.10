@@ -28,6 +28,7 @@ public class PopupScreen extends BaseScreenHandler {
     private static PopupScreen popup(String message, String imagePath, Boolean undecorated) throws IOException{
         PopupScreen popup = new PopupScreen(new Stage());
         if (undecorated) popup.stage.initStyle(StageStyle.UNDECORATED);
+        // Control Coupling vì sử dụng biến undecorated để điều khiển luồng hoạt động
         popup.message.setText(message);
         popup.setImage(imagePath);
         return popup;
@@ -54,6 +55,7 @@ public class PopupScreen extends BaseScreenHandler {
     public void show(Boolean autoClose) {
         super.show();
         if (autoClose) close(0.8);
+        // Control Coupling vì sử dụng biến autoClose để điều khiển luồng hoạt động
     }
 
     public void show(double time) {

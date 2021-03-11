@@ -63,6 +63,7 @@ public class Cart {
     public CartItem checkMediaInCart(Media media){
         for (CartItem cartItem : lstCartItem) {
             if (cartItem.getMedia().getId() == media.getId()) return cartItem;
+            //Stamp Coupling vì truyền vào cả media nhưng chỉ dùng mỗi id
         }
         return null;
     }
