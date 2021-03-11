@@ -32,6 +32,9 @@ public class PlaceOrderController extends BaseController {
      * This method checks the availability of product when user click PlaceOrder button
      * @throws SQLException
      */
+    /*
+/   common coupling vì hàm placeOrder sử dụng data global của class SessionInformation
+ */
     public void placeOrder() throws SQLException {
         SessionInformation.cartInstance.checkAvailabilityOfProduct();
     }
@@ -41,6 +44,9 @@ public class PlaceOrderController extends BaseController {
      * @return Order
      * @throws SQLException
      */
+    /*
+    /   common coupling vì hàm createOrder sử dụng data global của class SessionInformation
+    */
     public Order createOrder() throws SQLException {
         return new Order(SessionInformation.cartInstance);
     }
@@ -60,6 +66,8 @@ public class PlaceOrderController extends BaseController {
      * @throws InterruptedException
      * @throws IOException
      */
+
+
     public DeliveryInfo processDeliveryInfo(HashMap info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         LOGGER.info("Process Delivery Info");
         LOGGER.info(info.toString());
@@ -74,7 +82,8 @@ public class PlaceOrderController extends BaseController {
         System.out.println(deliveryInfo.getProvince());
         return deliveryInfo;
     }
-    
+
+
     /**
    * The method validates the info
    * @param info
@@ -106,7 +115,7 @@ public class PlaceOrderController extends BaseController {
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
     }
-    
+
     public boolean validateAddress(String address) {
         if (Objects.isNull(address)) return false;
         String patternString = "^[a-zA-Z\\s]*$";

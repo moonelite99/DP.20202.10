@@ -110,6 +110,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         }
     }
 
+
     protected void setupFunctionality() throws Exception {
 
         aimsImage.setOnMouseClicked(e -> {
@@ -134,6 +135,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         addMenuItem(2, "CD", splitMenuBtnSearch);
     }
 
+/*
+/  common coupling vì phương thức show() sử dụng biến global của lớp    SessionInformation là cartInstance
+ */
     @Override
     public void show() {
         if (authenticationController.isAnonymousSession()) {
@@ -212,7 +216,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     public void update(Observable observable) {
         if (observable instanceof MediaHandler) update((MediaHandler) observable);
     }
-
+/*
+/  common coupling vì phương thức update() sử dụng biến global của lớp SessionInformation là cartInstance
+ */
     private void update(MediaHandler mediaHandler) {
         int requestQuantity = mediaHandler.getRequestQuantity();
         Media media = mediaHandler.getMedia();
@@ -248,6 +254,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             exp.printStackTrace();
         }
     }
+
 
     @FXML
     void redirectLoginScreen(MouseEvent event) {

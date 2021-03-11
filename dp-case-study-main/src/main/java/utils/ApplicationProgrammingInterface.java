@@ -39,6 +39,8 @@ public class ApplicationProgrammingInterface {
 		return respone.substring(0, respone.length() - 1).toString();
 	}
 
+
+
 	public static String post(String url, String data) throws IOException {
 		allowMethods("PATCH");
 		HttpURLConnection conn = setupConnection(url);
@@ -71,12 +73,13 @@ public class ApplicationProgrammingInterface {
 		conn.setRequestProperty("Content-Type", "application/json");
 		return conn;
 	}
-
+/*
+/    Content coupling vì hàm allowMethods () sử dụng setAccessible(true) để thay đổi sự truy cập
+ */
 	private static void allowMethods(String... methods) {
 		try {
 			Field methodsField = HttpURLConnection.class.getDeclaredField("methods");
 			methodsField.setAccessible(true);
-
 			Field modifiersField = Field.class.getDeclaredField("modifiers");
 			modifiersField.setAccessible(true);
 			modifiersField.setInt(methodsField, methodsField.getModifiers() & ~Modifier.FINAL);

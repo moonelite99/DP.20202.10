@@ -65,7 +65,9 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 			PopupScreen.error(ex.getMessage());
 		}
 	}
-
+/*
+/   Common coupling vì hàm setupData sử dụng global data của lớp ShippingConfigs là PROVINCES, RUSH_SUPPORT_PROVINCES_INDEX
+ */
 	protected void setupData(Object dto) throws Exception {
 		this.order = (Order) dto;
 		this.province.getItems().addAll(ShippingConfigs.PROVINCES);
