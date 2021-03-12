@@ -35,6 +35,7 @@ import views.screen.ViewsConfig;
 import views.screen.cart.CartScreenHandler;
 import views.screen.popup.PopupScreen;
 
+// Coincidental cohesion vì class chứa nhiều hàm thực hiện chức năng khác nhau
 
 public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
