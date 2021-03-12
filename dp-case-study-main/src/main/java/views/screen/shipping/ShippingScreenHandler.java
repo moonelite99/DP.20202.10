@@ -121,10 +121,14 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 		order.setDeliveryInfo(deliveryInfo);
 	}
 
+
 	public PlaceOrderController getBController(){
 		return (PlaceOrderController) super.getBController();
 	}
+/*
+/   Coincidental Cohesion vì phương thức notifyError() này không liên quan đến Module này, cần viết trong mục error riêng
 
+ */
 	public void notifyError(){
 		// TODO: implement later on if we need
 	}

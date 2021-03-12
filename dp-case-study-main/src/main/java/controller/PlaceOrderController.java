@@ -69,7 +69,8 @@ public class PlaceOrderController extends BaseController {
      * @throws InterruptedException
      * @throws IOException
      */
-
+// Coincidental Cohesion vì phương thức processDeliveryInfo() không liên quan đến nghiệp vụ của class PlaceOrderController
+// mà nên tách ra 1 module riêng
     public DeliveryInfo processDeliveryInfo(HashMap info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         LOGGER.info("Process Delivery Info");
         LOGGER.info(info.toString());

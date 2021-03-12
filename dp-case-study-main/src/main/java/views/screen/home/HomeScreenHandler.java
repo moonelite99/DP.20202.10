@@ -253,7 +253,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         }
     }
 
-
+// Stamp coupling vì event ko được
     @FXML
     void redirectLoginScreen(MouseEvent event) {
         try {
