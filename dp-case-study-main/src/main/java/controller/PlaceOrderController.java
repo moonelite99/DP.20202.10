@@ -92,8 +92,8 @@ public class PlaceOrderController extends BaseController {
 
 
 /*
-/      Coincidental cohesion vì các phương thức validate như validateDeliveryInfo(),validatePhoneNumber(),validateName(),validateAddress()
- không liên quan đến module này và nên tách ra   1 class xử lý riêng trong mục utils
+/      Logical cohesion vì các phương thức validate như validateDeliveryInfo(),validatePhoneNumber(),validateName(),validateAddress()
+      cùng xử lý logic là validate nên ta cần tách ra viết 1 phương thức validate rồi để các phương thức kia override lại
 
  */
     public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException, InvalidDeliveryInfoException {

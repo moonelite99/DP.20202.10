@@ -9,8 +9,7 @@ import java.sql.Connection;
 import utils.*;
 
 
-// conicidental cohesion vì module entity là noi định nghĩa ra các đối tượng, thực thể nên class này cần để
-//ở một module riêng
+
 public class AIMSDB {
 
 	private static Logger LOGGER = Utils.getLogger(Connection.class.getName());
