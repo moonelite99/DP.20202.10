@@ -41,7 +41,6 @@ public class AuthenticationController extends BaseController {
         } else return SessionInformation.mainUser.cloneInformation();
     }
 
-
 /*
 /
     common coupling vì hàm login  sử dụng chung global data từ class SessionInformation
@@ -61,6 +60,9 @@ public class AuthenticationController extends BaseController {
 /*
 /    common coupling vì hàm logout sử dụng chung global data từ class SessionInformation là mainUser va expiredTime
  */
+/*
+/  concidental cohesion vì module này làm nhiệm vụ xác thực còn chức năng logout nên để ra 1 module riêng
+ */
     public void logout() {
         SessionInformation.mainUser = null;
         SessionInformation.expiredTime = null;
@@ -77,7 +79,7 @@ public class AuthenticationController extends BaseController {
      */
 
 
-
+// coincidental cohesion vì hàm md5() nên để lại class utils để controller gọi đến khi sử dụng
     private String md5(String message) {
         String digest = null;
         try {

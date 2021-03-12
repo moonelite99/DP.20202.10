@@ -92,6 +92,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         return (HomeController) super.getBController();
     }
 
+    // stamp coupling vì ham setupData truyen vao dto nhung khong su dung
     protected void setupData(Object dto) throws Exception {
         setBController(new HomeController());
         this.authenticationController = new AuthenticationController();
@@ -110,9 +111,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         }
     }
 
-
     protected void setupFunctionality() throws Exception {
-
         aimsImage.setOnMouseClicked(e -> {
             addMediaHome(this.homeItems);
         });
@@ -157,7 +156,6 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         File file1 = new File(ViewsConfig.IMAGE_PATH + "/" + "Logo.png");
         Image img1 = new Image(file1.toURI().toString());
         aimsImage.setImage(img1);
-
         File file2 = new File(ViewsConfig.IMAGE_PATH + "/" + "cart.png");
         Image img2 = new Image(file2.toURI().toString());
         cartImage.setImage(img2);
