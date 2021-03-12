@@ -21,6 +21,7 @@ import java.util.regex.Pattern;
  * This class controls the flow of place order usecase in our AIMS project
  * @author nguyenlm
  */
+// logical conhesion, cac phuong thuc validate can dc tach rieng vao mot lop
 public class PlaceOrderController extends BaseController {
 
     /**
@@ -56,6 +57,8 @@ public class PlaceOrderController extends BaseController {
      * @param order
      * @return Invoice
      */
+    
+    // data coupling vi ham createInvoice truyen vao order va dung het bien order
     public Invoice createInvoice(Order order) {
         return new Invoice(order);
     }

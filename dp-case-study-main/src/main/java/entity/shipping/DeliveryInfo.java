@@ -21,7 +21,7 @@ public class DeliveryInfo {
         this.distanceCalculator = distanceCalculator;
     }
 
-//
+    // stamp coupling vi ham calculateShippingFee truyen vao order nhung khong su dung
     public int calculateShippingFee(Order order) {
         int distance = distanceCalculator.calculateDistance(address, province);
         return (int) (distance * 1.2);
