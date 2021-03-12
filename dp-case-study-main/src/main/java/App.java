@@ -21,6 +21,7 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+		// Coincidental cohesion, nên tách thành phương thức
 		try {
 
 			// initialize the scene
