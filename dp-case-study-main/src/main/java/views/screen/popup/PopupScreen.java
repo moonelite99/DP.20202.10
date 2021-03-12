@@ -12,7 +12,10 @@ import views.screen.ViewsConfig;
 
 import java.io.IOException;
 
-
+/**
+ * logical cohesion, vi cac ham static success(), error() ban chat la khong thuoc ve lop PopupScreen
+ * ma no de tao ra cac object PopupScreen tuong ung => giai phap: tao PopupScreenFactory
+ */
 public class PopupScreen extends BaseScreenHandler {
 
     @FXML
