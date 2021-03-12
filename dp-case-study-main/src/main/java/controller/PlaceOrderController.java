@@ -57,6 +57,8 @@ public class PlaceOrderController extends BaseController {
      * @param order
      * @return Invoice
      */
+    
+    // data coupling vi ham createInvoice truyen vao order va dung het bien order
     public Invoice createInvoice(Order order) {
         return new Invoice(order);
     }

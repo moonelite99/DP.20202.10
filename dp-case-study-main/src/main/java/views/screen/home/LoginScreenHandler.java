@@ -61,7 +61,8 @@ public class LoginScreenHandler extends BaseScreenHandler{
     public AuthenticationController getBController() {
         return (AuthenticationController) super.getBController();
     }
-
+    
+    // stamp coupling vì ham setupData truyen vao dto nhung khong su dung
     protected void setupData(Object dto) throws Exception {
     }
 
