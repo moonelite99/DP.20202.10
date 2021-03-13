@@ -22,6 +22,7 @@ public class DeliveryInfo {
     }
 
     // stamp coupling vi ham calculateShippingFee truyen vao order nhung khong su dung
+    // Communication Cohesion vì Phương thức calculateShippingFee() không liên quan đến Class này
     public int calculateShippingFee(Order order) {
         int distance = distanceCalculator.calculateDistance(address, province);
         return (int) (distance * 1.2);
