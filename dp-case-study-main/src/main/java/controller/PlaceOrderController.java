@@ -22,6 +22,10 @@ import java.util.regex.Pattern;
  * @author nguyenlm
  */
 // logical conhesion, cac phuong thuc validate can dc tach rieng vao mot lop
+// SOLID: Vi phạm Nguyên lý SRP vì class này thực vì class PlaceOrderController thực hiện nhiều hơn 1 nhiệm vụ như vừa phải
+// điều khiển luồng dữ liệu như tạo đơn hàng, tạo hóa đơn,xử lý thông tin đơn, vừa phải validate dữ liệu
+// SOLID : vì phạm nguyên lý ISP và LSP vì class PlaceOrderController kế thừa lớp BaseController nhưng lại ko thực hiện (override ) các hành vi,
+//phương thức của class cha là BaseController
 public class PlaceOrderController extends BaseController {
 
     /**
@@ -59,6 +63,7 @@ public class PlaceOrderController extends BaseController {
      */
     
     // data coupling vi ham createInvoice truyen vao order va dung het bien order
+    //SOLID : vi phạm nguyên lý DIP VÀ OCP phương thức này có tham số là 1 class cụ thể Order nếu sau này xuất hiện loại đơn hàng khác thì ảnh hưởng đến mã nguồn
     public Invoice createInvoice(Order order) {
         return new Invoice(order);
     }
@@ -71,6 +76,7 @@ public class PlaceOrderController extends BaseController {
      */
 // Coincidental Cohesion vì phương thức processDeliveryInfo() không liên quan đến nghiệp vụ của class PlaceOrderController
 // mà nên tách ra 1 module riêng
+
     public DeliveryInfo processDeliveryInfo(HashMap info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         LOGGER.info("Process Delivery Info");
         LOGGER.info(info.toString());
@@ -100,6 +106,9 @@ public class PlaceOrderController extends BaseController {
       cùng xử lý logic là validate nên ta cần tách ra viết 1 phương thức validate rồi để các phương thức kia override lại
 
  */
+
+
+    // SOLID : vi phạm nguyên lý OCP vì sau này cần thay đổi info để validate thì phần code xử lý cũng phải thay đổi
     public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         if (validatePhoneNumber(info.get("phone"))
         || validateName(info.get("name"))
