@@ -21,11 +21,14 @@ import java.util.regex.Pattern;
  * This class controls the flow of place order usecase in our AIMS project
  * @author nguyenlm
  */
+
 // logical conhesion, cac phuong thuc validate can dc tach rieng vao mot lop
 // SOLID: Vi phạm Nguyên lý SRP vì class này thực vì class PlaceOrderController thực hiện nhiều hơn 1 nhiệm vụ như vừa phải
 // điều khiển luồng dữ liệu như tạo đơn hàng, tạo hóa đơn,xử lý thông tin đơn, vừa phải validate dữ liệu
 // SOLID : vì phạm nguyên lý ISP và LSP vì class PlaceOrderController kế thừa lớp BaseController nhưng lại ko thực hiện (override ) các hành vi,
 //phương thức của class cha là BaseController
+
+
 public class PlaceOrderController extends BaseController {
 
     /**

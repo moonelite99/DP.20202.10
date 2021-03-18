@@ -13,7 +13,6 @@ import dao.media.MediaDAO;
 //phương thức của class cha là BaseController
 public class HomeController extends BaseController {
 
-
     /**
      * this method gets all Media in DB and return back to home to display
      * @return List[Media]
