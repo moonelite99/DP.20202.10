@@ -18,6 +18,9 @@ import java.util.Objects;
 /**
  * @author
  */
+
+// SOLID : vì phạm nguyên lý ISP và LSP vì class AuthenticationController kế thừa lớp BaseController nhưng lại ko thực hiện (override ) các hành vi,
+//phương thức của class cha là BaseController
 public class AuthenticationController extends BaseController {
 
     public boolean isAnonymousSession() {
@@ -78,6 +81,7 @@ public class AuthenticationController extends BaseController {
 
 
 // coincidental cohesion vì hàm md5() nên để lại class utils để controller gọi đến khi sử dụng
+// SOLID : vi phạm nguyên lý SRP vì class AuthenticationController thực hiện nhiều hơn 1 nhiệm vụ như vừa xác thực( login) vừa phải mã hóa  dữ liệu
     private String md5(String message) {
         String digest = null;
         try {
