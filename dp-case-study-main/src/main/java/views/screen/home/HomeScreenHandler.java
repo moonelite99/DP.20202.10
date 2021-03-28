@@ -35,7 +35,7 @@ import views.screen.ViewsConfig;
 import views.screen.cart.CartScreenHandler;
 import views.screen.popup.PopupScreen;
 
-
+// SOLID : vì vi phạm nguyên lý LSP VÀ ISP vì class kế thừa từ class cha BaseScreenHandler nhưng không overide các phương thức của class cha
 public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
     public static Logger LOGGER = Utils.getLogger(HomeScreenHandler.class.getName());
@@ -253,7 +253,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         }
     }
 
-
+// Stamp coupling vì event ko được
     @FXML
     void redirectLoginScreen(MouseEvent event) {
         try {

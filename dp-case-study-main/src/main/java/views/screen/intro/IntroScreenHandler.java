@@ -15,6 +15,7 @@ import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.popup.PopupScreen;
 
+// SOLID : vì vi phạm nguyên lý LSP VÀ ISP vì class  kế thừa từ class cha BaseScreenHandler nhưng không overide các phương thức của class cha
 public class IntroScreenHandler extends BaseScreenHandler {
 
     private static final Logger LOGGER = Utils.getLogger(IntroScreenHandler.class.getName());

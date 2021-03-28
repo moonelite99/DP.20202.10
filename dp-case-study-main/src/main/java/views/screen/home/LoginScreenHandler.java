@@ -33,7 +33,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
-
+// SOLID : vì vi phạm nguyên lý LSP VÀ ISP vì class  kế thừa từ class cha BaseScreenHandler nhưng không overide các phương thức của class cha
 public class LoginScreenHandler extends BaseScreenHandler{
 
     public static Logger LOGGER = Utils.getLogger(LoginScreenHandler.class.getName());
@@ -79,7 +79,7 @@ public class LoginScreenHandler extends BaseScreenHandler{
             PopupScreen.error(ex.getMessage());
         }
     }
-
+    // Coincidental cohesion hàm này nên để ra util 
     @FXML
     void backToHomeScreen(MouseEvent event) throws IOException, InterruptedException, SQLException {
         this.homeScreenHandler.show();

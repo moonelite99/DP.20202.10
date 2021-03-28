@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
+// SOLID : vì vi phạm nguyên lý LSP VÀ ISP vì class kế thừa từ class cha BaseScreenHandler nhưng không overide các phương thức của class cha
 public class ShippingScreenHandler extends BaseScreenHandler {
 
 	private static final Logger LOGGER = Utils.getLogger(ShippingScreenHandler.class.getName());
@@ -121,10 +122,15 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 		order.setDeliveryInfo(deliveryInfo);
 	}
 
+
 	public PlaceOrderController getBController(){
 		return (PlaceOrderController) super.getBController();
 	}
+/*
+/   Coincidental Cohesion vì phương thức notifyError() này không liên quan đến Module này, cần viết trong mục error riêng
+ */
 
+//SOLID : vì vi phạm Nguyên lý DIP vì phương thức notifyError() nên được implements từ 1 class Abstract Notify riêng
 	public void notifyError(){
 		// TODO: implement later on if we need
 	}

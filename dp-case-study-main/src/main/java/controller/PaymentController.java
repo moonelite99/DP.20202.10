@@ -86,6 +86,7 @@ public class PaymentController extends BaseController {
 	 * @return {@link Map Map} represent the payment result with a
 	 *         message.
 	 */
+	//SOLID: Vi pham nguyen ly OCP vi khi them phuong thuc thanh toan moi se phai chinh sua code nay
 	public Map<String, String> payOrder(int amount, String contents, String cardNumber, String cardHolderName,
 			String expirationDate, String securityCode) {
 		Map<String, String> result = new Hashtable<String, String>();
