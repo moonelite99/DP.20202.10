@@ -1,26 +1,17 @@
 package views.screen.home;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-import java.util.ResourceBundle;
-import java.util.logging.Logger;
-
 import common.exception.MediaNotAvailableException;
 import common.exception.ViewCartException;
 import common.interfaces.Observable;
 import common.interfaces.Observer;
-import controller.*;
+import controller.AuthenticationController;
+import controller.HomeController;
+import controller.SessionInformation;
+import controller.ViewCartController;
 import entity.cart.Cart;
 import entity.cart.CartItem;
 import entity.media.Media;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -35,10 +26,18 @@ import views.screen.ViewsConfig;
 import views.screen.cart.CartScreenHandler;
 import views.screen.popup.PopupScreen;
 
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.logging.Logger;
+
 
 public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
-    public static Logger LOGGER = Utils.getLogger(HomeScreenHandler.class.getName());
+    public static Logger LOGGER = Utils.getInstance().getLogger(HomeScreenHandler.class.getName());
 
     @FXML
     private Label numMediaInCart;
@@ -148,7 +147,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             btnLogin.setOnMouseClicked(event -> {});
         }
 
-        numMediaInCart.setText(String.valueOf(SessionInformation.getCartInstance().getListMedia().size()) + " media");
+        numMediaInCart.setText(String.valueOf(SessionInformation.getInstance().getCartInstance().getListMedia().size()) + " media");
         super.show();
     }
 
@@ -225,7 +224,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
         try {
             if (requestQuantity > media.getQuantity()) throw new MediaNotAvailableException();
-            Cart cart = SessionInformation.getCartInstance();
+            Cart cart = SessionInformation.getInstance().getCartInstance();
             // if media already in cart then we will increase the quantity by 1 instead of create the new cartMedia
             CartItem mediaInCart = getBController().checkMediaInCart(media);
             if (mediaInCart != null) {

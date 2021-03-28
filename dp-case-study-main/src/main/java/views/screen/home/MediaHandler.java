@@ -1,17 +1,7 @@
 package views.screen.home;
 
-import java.io.File;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Logger;
-
-import common.exception.MediaNotAvailableException;
 import common.interfaces.Observable;
 import common.interfaces.Observer;
-import entity.cart.Cart;
-import entity.cart.CartItem;
 import entity.media.Media;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,7 +13,13 @@ import javafx.scene.image.ImageView;
 import utils.Utils;
 import views.screen.FXMLScreenHandler;
 import views.screen.ViewsConfig;
-import views.screen.popup.PopupScreen;
+
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
 
 public class MediaHandler extends FXMLScreenHandler implements Observable {
 
@@ -45,7 +41,7 @@ public class MediaHandler extends FXMLScreenHandler implements Observable {
     @FXML
     protected Button addToCartBtn;
 
-    private static Logger LOGGER = Utils.getLogger(MediaHandler.class.getName());
+    private static Logger LOGGER = Utils.getInstance().getLogger(MediaHandler.class.getName());
     private Media media;
     private List<Observer> observerList;
 

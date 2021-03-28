@@ -1,10 +1,9 @@
 package controller;
 
-import java.util.List;
-
-import entity.cart.Cart;
 import entity.cart.CartItem;
 import entity.media.Media;
+
+import java.util.List;
 
 /**
  * This class is the base controller for our AIMS project
@@ -22,7 +21,7 @@ public class BaseController {
  */
     public CartItem checkMediaInCart(Media media){
         //  return SessionInformation.cartInstance.checkMediaInCart(media);
-        return SessionInformation.getCartInstance().checkMediaInCart(media);
+        return SessionInformation.getInstance().getCartInstance().checkMediaInCart(media);
     }
 
     /**
@@ -35,6 +34,6 @@ public class BaseController {
  */
     public List getListCartMedia(){
         // return SessionInformation.cartInstance.getListMedia();
-        return SessionInformation.getCartInstance().getListMedia();
+        return SessionInformation.getInstance().getCartInstance().getListMedia();
     }
 }

@@ -1,18 +1,26 @@
 package entity.cart;
 
+import common.exception.MediaNotAvailableException;
+import entity.media.Media;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import common.exception.MediaNotAvailableException;
-import entity.media.Media;
 
 public class Cart {
     
     private List<CartItem> lstCartItem;
 
-    public Cart() {
+    private static Cart instance;
+
+    private Cart() {
         lstCartItem = new ArrayList<>();
+    }
+    public static Cart getCartInstance(){
+        if(instance == null){
+            instance = new Cart();
+        }
+        return instance;
     }
 
     public void addCartMedia(CartItem cm){

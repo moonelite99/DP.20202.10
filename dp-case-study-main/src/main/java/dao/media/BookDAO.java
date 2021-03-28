@@ -21,7 +21,9 @@ public class BookDAO extends MediaDAO {
                 "INNER JOIN aims.Media " +
                 "ON Media.id = Book.id " +
                 "where Media.id = " + id + ";";
-        Statement stm = AIMSDB.getConnection().createStatement();
+
+        AIMSDB aimsdb =AIMSDB.getAimsdb();
+        Statement stm = aimsdb.getConnection().createStatement();
         ResultSet res = stm.executeQuery(sql);
         if(res.next()) {
 

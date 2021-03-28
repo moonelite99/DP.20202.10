@@ -35,10 +35,10 @@ public class AuthenticationController extends BaseController {
 
  */
     public User getMainUser() throws ExpiredSessionException {
-        if (SessionInformation.mainUser == null || SessionInformation.expiredTime == null || SessionInformation.expiredTime.isBefore(LocalDateTime.now())) {
+        if (SessionInformation.getInstance().getMainUser() == null || SessionInformation.getInstance().getExpiredTime() == null || SessionInformation.getInstance().getExpiredTime().isBefore(LocalDateTime.now())) {
             logout();
             throw new ExpiredSessionException();
-        } else return SessionInformation.mainUser.cloneInformation();
+        } else return SessionInformation.getInstance().getMainUser().cloneInformation();
     }
 
 
@@ -50,8 +50,8 @@ public class AuthenticationController extends BaseController {
         try {
             User user = new UserDAO().authenticate(email, md5(password));
             if (Objects.isNull(user)) throw new FailLoginException();
-            SessionInformation.mainUser = user;
-            SessionInformation.expiredTime = LocalDateTime.now().plusHours(24);
+            SessionInformation.getInstance().setMainUser(user);
+            SessionInformation.getInstance().setExpiredTime(LocalDateTime.now().plusHours(24));
         } catch (SQLException ex) {
             throw new FailLoginException();
         }
@@ -62,8 +62,9 @@ public class AuthenticationController extends BaseController {
 /    common coupling vì hàm logout sử dụng chung global data từ class SessionInformation là mainUser va expiredTime
  */
     public void logout() {
-        SessionInformation.mainUser = null;
-        SessionInformation.expiredTime = null;
+        SessionInformation.getInstance().setMainUser(null);
+        SessionInformation.getInstance().setExpiredTime(null);
+
     }
 
 
@@ -90,7 +91,7 @@ public class AuthenticationController extends BaseController {
             }
             digest = sb.toString();
         } catch (NoSuchAlgorithmException ex) {
-            Utils.getLogger(Utils.class.getName());
+            Utils.getInstance().getLogger(Utils.class.getName());
             digest = "";
         }
         return digest;

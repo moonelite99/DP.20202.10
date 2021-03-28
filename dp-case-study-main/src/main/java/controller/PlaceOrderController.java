@@ -1,18 +1,15 @@
 package controller;
 
 import common.exception.InvalidDeliveryInfoException;
-import entity.cart.Cart;
-import entity.cart.CartItem;
 import entity.invoice.Invoice;
 import entity.order.Order;
-import entity.order.OrderItem;
 import entity.shipping.DeliveryInfo;
-import entity.shipping.ShippingConfigs;
 import org.example.DistanceCalculator;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Objects;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,7 +23,7 @@ public class PlaceOrderController extends BaseController {
     /**
      * Just for logging purpose
      */
-    private static Logger LOGGER = utils.Utils.getLogger(PlaceOrderController.class.getName());
+    private static Logger LOGGER = utils.Utils.getInstance().getLogger(PlaceOrderController.class.getName());
 
     /**
      * This method checks the availability of product when user click PlaceOrder button
@@ -37,7 +34,7 @@ public class PlaceOrderController extends BaseController {
  */
     public void placeOrder() throws SQLException {
         // SessionInformation.cartInstance.checkAvailabilityOfProduct();
-        SessionInformation.getCartInstance().checkAvailabilityOfProduct();
+        SessionInformation.getInstance().getCartInstance().checkAvailabilityOfProduct();
     }
 
     /**
@@ -50,7 +47,7 @@ public class PlaceOrderController extends BaseController {
     */
     public Order createOrder() throws SQLException {
         // return new Order(SessionInformation.cartInstance);
-        return new Order(SessionInformation.getCartInstance());
+        return new Order(SessionInformation.getInstance().getCartInstance());
     }
 
     /**
