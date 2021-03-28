@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
  * @author nguyenlm
  */
 
+// SOLID: vi pham nguyen ly SRP, vi PlaceOrderController thuc hien nhieu chuc nang: place order, validate
 // logical conhesion, cac phuong thuc validate can dc tach rieng vao mot lop
 // SOLID: Vi phạm Nguyên lý SRP vì class này thực vì class PlaceOrderController thực hiện nhiều hơn 1 nhiệm vụ như vừa phải
 // điều khiển luồng dữ liệu như tạo đơn hàng, tạo hóa đơn,xử lý thông tin đơn, vừa phải validate dữ liệu
