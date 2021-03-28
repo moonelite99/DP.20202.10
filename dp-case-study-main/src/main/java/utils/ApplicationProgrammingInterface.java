@@ -40,7 +40,6 @@ public class ApplicationProgrammingInterface {
 	}
 
 
-
 	public static String post(String url, String data) throws IOException {
 		allowMethods("PATCH");
 		HttpURLConnection conn = setupConnection(url);

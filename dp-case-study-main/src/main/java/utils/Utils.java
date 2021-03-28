@@ -13,6 +13,8 @@ import java.util.logging.Logger;
 /**
  * @author nguyenlm Contains helper functions
  */
+//Design Pattern :  Singleton pattern  vì class Utils đảm bảo chỉ duy nhất 1 instance là LOGGER được tạo ra và class này cung cấp method getLogger()
+// để có thể truy xuất được instance duy nhất là LOGGER mọi lúc mọi nơi trong chương trình
 public class Utils {
 
 	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -20,7 +22,6 @@ public class Utils {
 	static {
 		System.setProperty("java.util.logging.SimpleFormatter.format", "[%4$-4s] [%1$tF %1$tT] [%2$-7s] %5$s %n");
 	}
-
 	public static Logger getLogger(String className) {
 		return Logger.getLogger(className);
 	}

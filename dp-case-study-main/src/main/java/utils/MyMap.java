@@ -29,7 +29,6 @@ public class MyMap extends LinkedHashMap<String, Object> {
 
 		StringBuilder sb = new StringBuilder();
 		Iterator<Map.Entry<String, Object>> it = entrySet().iterator();
-
 		sb.append('{');
 		for (int i = 0;; i++) {
 			Map.Entry<String, Object> e = it.next();
@@ -62,6 +61,7 @@ public class MyMap extends LinkedHashMap<String, Object> {
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 */
+	
 	public static Map<String, Object> toMyMap(Object obj) throws IllegalArgumentException, IllegalAccessException {
 		Map<String, Object> map = new MyMap();
 		List<Field> fields = new ArrayList<>();

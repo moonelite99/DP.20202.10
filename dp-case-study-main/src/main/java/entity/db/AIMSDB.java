@@ -8,6 +8,9 @@ import java.util.logging.Logger;
 import java.sql.Connection;
 import utils.*;
 
+
+//Design Pattern : Singleton pattern vì class AIMSDB đảm bảo chỉ duy nhất 1 instance là connect được tạo ra và class cung cấp method getConnection()
+// để có thể truy xuất được instance duy nhất là connect  mọi lúc mọi nơi trong chương trình
 public class AIMSDB {
 
 	private static Logger LOGGER = Utils.getLogger(Connection.class.getName());

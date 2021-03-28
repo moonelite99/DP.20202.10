@@ -21,7 +21,8 @@ public class BaseController {
 /   common coupling vì hàm checkMediaIncart sử dụng data global của class SessionInformation là cartInstance
  */
     public CartItem checkMediaInCart(Media media){
-        return SessionInformation.cartInstance.checkMediaInCart(media);
+        //  return SessionInformation.cartInstance.checkMediaInCart(media);
+        return SessionInformation.getCartInstance().checkMediaInCart(media);
     }
 
     /**
@@ -33,6 +34,7 @@ public class BaseController {
 /   common coupling vì hàm getListCartMedia() sử dụng data global của class SessionInformation là biến cartInstance
  */
     public List getListCartMedia(){
-        return SessionInformation.cartInstance.getListMedia();
+        // return SessionInformation.cartInstance.getListMedia();
+        return SessionInformation.getCartInstance().getListMedia();
     }
 }
