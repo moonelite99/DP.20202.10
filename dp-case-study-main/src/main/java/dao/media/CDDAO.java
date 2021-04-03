@@ -20,8 +20,8 @@ public class CDDAO extends MediaDAO {
                 "INNER JOIN aims.Media " +
                 "ON Media.id = CD.id " +
                 "where Media.id = " + id + ";";
-
-        ResultSet res = AIMSDB.getConnection().createStatement().executeQuery(sql);
+        AIMSDB aimsdb=AIMSDB.getAimsdb();
+        ResultSet res = aimsdb.getConnection().createStatement().executeQuery(sql);
         if(res.next()) {
 
             // from media table

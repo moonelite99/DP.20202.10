@@ -1,10 +1,9 @@
 package controller;
 
-import java.util.List;
-
-import entity.cart.Cart;
 import entity.cart.CartItem;
 import entity.media.Media;
+
+import java.util.List;
 
 /**
  * This class is the base controller for our AIMS project
@@ -21,7 +20,8 @@ public class BaseController {
 /   common coupling vì hàm checkMediaIncart sử dụng data global của class SessionInformation là cartInstance
  */
     public CartItem checkMediaInCart(Media media){
-        return SessionInformation.cartInstance.checkMediaInCart(media);
+        //  return SessionInformation.cartInstance.checkMediaInCart(media);
+        return SessionInformation.getInstance().getCartInstance().checkMediaInCart(media);
     }
 
     /**
@@ -33,6 +33,7 @@ public class BaseController {
 /   common coupling vì hàm getListCartMedia() sử dụng data global của class SessionInformation là biến cartInstance
  */
     public List getListCartMedia(){
-        return SessionInformation.cartInstance.getListMedia();
+        // return SessionInformation.cartInstance.getListMedia();
+        return SessionInformation.getInstance().getCartInstance().getListMedia();
     }
 }

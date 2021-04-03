@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class ApplicationProgrammingInterface {
 
 	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-	private static Logger LOGGER = Utils.getLogger(Utils.class.getName());
+	private static Logger LOGGER = Utils.getInstance().getLogger(Utils.class.getName());
 
 	public static String get(String url, String token) throws Exception {
 		LOGGER.info("Request URL: " + url + "\n");
@@ -38,7 +38,6 @@ public class ApplicationProgrammingInterface {
 		LOGGER.info("Respone Info: " + respone.substring(0, respone.length() - 1).toString());
 		return respone.substring(0, respone.length() - 1).toString();
 	}
-
 
 
 	public static String post(String url, String data) throws IOException {

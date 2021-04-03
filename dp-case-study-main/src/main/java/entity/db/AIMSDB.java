@@ -1,16 +1,28 @@
 package entity.db;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Logger;
+import utils.Utils;
 
 import java.sql.Connection;
-import utils.*;
+import java.sql.DriverManager;
+import java.util.logging.Logger;
 
+
+//Design Pattern : Singleton pattern vì class AIMSDB đảm bảo chỉ duy nhất 1 instance  được tạo ra và class cung cấp method getConnection()
+// để có thể truy xuất được instance duy nhất  mọi lúc mọi nơi trong chương trình
 public class AIMSDB {
 
-	private static Logger LOGGER = Utils.getLogger(Connection.class.getName());
+	private static Logger LOGGER = Utils.getInstance().getLogger(Connection.class.getName());
+    private static AIMSDB aimsdb;
+    private AIMSDB(){
+
+    }
+    public static AIMSDB getAimsdb(){
+        if(aimsdb==null){
+            aimsdb=new AIMSDB();
+        }
+        return aimsdb;
+    }
+
 	private static Connection connect;
 	// TODO: refactor Utils -> limit connections
     public static Connection getConnection() {

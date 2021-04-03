@@ -1,13 +1,6 @@
 package views.screen.payment;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.logging.Logger;
-
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -16,9 +9,13 @@ import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.popup.PopupScreen;
 
+import java.io.IOException;
+import java.util.Map;
+import java.util.logging.Logger;
+
 public class ResultScreenHandler extends BaseScreenHandler {
 
-	private static final Logger LOGGER = Utils.getLogger(PaymentScreenHandler.class.getName());
+	private static final Logger LOGGER = Utils.getInstance().getLogger(PaymentScreenHandler.class.getName());
 
 	private String result;
 	private String message;

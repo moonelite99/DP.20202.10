@@ -10,6 +10,8 @@ import java.util.Locale;
 /**
  * @author
  */
+//Design Pattern :Singleton Pattern  vì class ViewsConfig đảm bảo chỉ duy nhất 1 instance  được tạo ra và class này cung cấp method getCurrencyFormat()
+// để có thể truy xuất được instance duy nhất  mọi lúc mọi nơi trong chương trình
 public class ViewsConfig {
 
     // static resource

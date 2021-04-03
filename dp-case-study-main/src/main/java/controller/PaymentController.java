@@ -1,17 +1,16 @@
 package controller;
 
-import java.util.Calendar;
-import java.util.Hashtable;
-import java.util.Map;
-
 import common.exception.InvalidCardException;
 import common.exception.PaymentException;
 import common.exception.UnrecognizedException;
-import entity.cart.Cart;
 import entity.payment.CreditCard;
 import entity.payment.PaymentTransaction;
 import subsystem.InterbankInterface;
 import subsystem.InterbankSubsystem;
+
+import java.util.Calendar;
+import java.util.Hashtable;
+import java.util.Map;
 
 
 /**
@@ -104,6 +103,6 @@ public class PaymentController extends BaseController {
 	}
 
 	public void emptyCart(){
-        SessionInformation.cartInstance.emptyCart();
+		SessionInformation.getInstance().getCartInstance().emptyCart();
     }
 }
