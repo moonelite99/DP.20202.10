@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-
+// SOLID : vì vi phạm nguyên lý LSP VÀ ISP vì class  kế thừa từ class cha BaseScreenHandler nhưng không overide các phương thức của class cha
 public class LoginScreenHandler extends BaseScreenHandler{
 
     public static Logger LOGGER = Utils.getInstance().getLogger(LoginScreenHandler.class.getName());
@@ -42,7 +42,8 @@ public class LoginScreenHandler extends BaseScreenHandler{
     public AuthenticationController getBController() {
         return (AuthenticationController) super.getBController();
     }
-
+    
+    // stamp coupling vì ham setupData truyen vao dto nhung khong su dung
     protected void setupData(Object dto) throws Exception {
     }
 
@@ -59,7 +60,7 @@ public class LoginScreenHandler extends BaseScreenHandler{
             PopupScreen.error(ex.getMessage());
         }
     }
-
+    // Coincidental cohesion hàm này nên để ra util 
     @FXML
     void backToHomeScreen(MouseEvent event) throws IOException, InterruptedException, SQLException {
         this.homeScreenHandler.show();

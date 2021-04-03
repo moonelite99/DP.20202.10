@@ -49,6 +49,7 @@ public class Media {
         int updated_quantity = new MediaDAO().getMediaById(id).quantity;
         this.quantity = updated_quantity;
         return updated_quantity;
+        //Procedural cohesion vi 2 khoi lenh chi lien ket voi nhau vi nam trong 1 trinh tu thuc hien
     }
 
     // getter and setter 

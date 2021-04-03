@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+// SOLID : vì vi phạm nguyên lý LSP VÀ ISP vì class  kế thừa từ class cha BaseScreenHandler nhưng không overide các phương thức của class cha
 public class IntroScreenHandler extends BaseScreenHandler {
 
     private static final Logger LOGGER = Utils.getInstance().getLogger(IntroScreenHandler.class.getName());
@@ -35,7 +36,7 @@ public class IntroScreenHandler extends BaseScreenHandler {
         }
     }
 
-
+    // stamp coupling vì ham setupData truyen vao dto nhung khong su dung
     protected void setupData(Object dto) throws Exception {
         return;
     }

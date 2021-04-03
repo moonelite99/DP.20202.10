@@ -9,6 +9,9 @@ import java.util.List;
  * This class is the base controller for our AIMS project
  * @author nguyenlm
  */
+
+
+// Communication Cohesion vì hai phương thức checkMediaInCart(),getListCartMedia () cùng truy cập đến dữ liệu giỏ hàng
 public class BaseController {
     
     /**

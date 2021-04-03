@@ -54,6 +54,7 @@ public class Order {
     public void setDeliveryInfo(DeliveryInfo deliveryInfo) {
         this.deliveryInfo = deliveryInfo;
         this.shippingFees = deliveryInfo.calculateShippingFee(this);
+        //Communication Cohesion vi 2 dong lenh chi lien ket voi nhau boi du lieu dung chung
     }
 
     public List getOrderMediaList() {

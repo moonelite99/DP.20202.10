@@ -94,4 +94,5 @@ public class MediaHandler extends FXMLScreenHandler implements Observable {
     public void notifyObservers() {
         observerList.forEach(observer -> observer.update(this));
     }
+
 }

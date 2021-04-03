@@ -7,6 +7,8 @@ public class PaymentTransaction {
 	private String transactionContent;
 	private int amount;
 	private String createdAt;
+
+	//SOLID: Vi pham nguyen ly OCP vi khi them phuong thuc thanh toan moi se phai thay doi code o day
 	
 	public PaymentTransaction(String errorCode, CreditCard card, String transactionId, String transactionContent,
                               int amount, String createdAt) {
