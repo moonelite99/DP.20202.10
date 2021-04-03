@@ -34,84 +34,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="500c42d1-8f22-4ff5-accf-964a7af63a87" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/AimsException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/ExpiredSessionException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/FailLoginException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/InternalServerErrorException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/InternalServerException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/InvalidCardException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/InvalidDeliveryInfoException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/InvalidTransactionAmountException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/InvalidVersionException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/MediaNotAvailableException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/MediaUpdateException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/NotEnoughBalanceException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/NotEnoughTransactionInfoException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/PaymentException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/PlaceOrderException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/PlaceRushOrderException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/ProcessInvoiceException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/SuspiciousTransactionException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/UnrecognizedException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/exception/ViewCartException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/interfaces/Observable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/common/interfaces/Observer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/controller/AuthenticationController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/controller/BaseController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/controller/HomeController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/controller/PaymentController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/controller/PlaceOrderController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/controller/SessionInformation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/controller/ViewCartController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/dao/invoice/InvoiceDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/dao/media/BookDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/dao/media/CDDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/dao/media/DVDDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/dao/media/MediaDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/dao/order/OrderDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/dao/order/OrderItemDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/dao/user/UserDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/entity/cart/Cart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/entity/cart/CartItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/entity/db/AIMSDB.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/entity/invoice/Invoice.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/entity/media/Book.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/entity/media/CD.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/entity/media/DVD.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/entity/media/Media.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/entity/order/Order.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/entity/order/OrderItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/entity/payment/CreditCard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/entity/payment/PaymentTransaction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/entity/shipping/DeliveryInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/entity/shipping/ShippingConfigs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/entity/user/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/subsystem/InterbankInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/subsystem/InterbankSubsystem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/subsystem/interbank/InterbankBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/subsystem/interbank/InterbankConfigs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/subsystem/interbank/InterbankPayloadConverter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/subsystem/interbank/InterbankSubsystemController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/utils/ApplicationProgrammingInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/utils/MyMap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/utils/Utils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/views/screen/BaseScreenHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/views/screen/FXMLScreenHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/views/screen/ViewsConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/views/screen/cart/CartScreenHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/views/screen/cart/MediaHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/views/screen/home/HomeScreenHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/views/screen/home/LoginScreenHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/views/screen/home/MediaHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/views/screen/intro/IntroScreenHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/views/screen/invoice/InvoiceScreenHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/views/screen/invoice/MediaInvoiceScreenHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/views/screen/payment/PaymentScreenHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/views/screen/payment/ResultScreenHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/views/screen/popup/PopupScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/dp-case-study-main/views/screen/shipping/ShippingScreenHandler.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,7 +184,7 @@
       <workItem from="1617106519728" duration="78000" />
       <workItem from="1617106614399" duration="758000" />
       <workItem from="1617369649259" duration="5334000" />
-      <workItem from="1617414939722" duration="1452000" />
+      <workItem from="1617414939722" duration="2296000" />
     </task>
     <servers />
   </component>
