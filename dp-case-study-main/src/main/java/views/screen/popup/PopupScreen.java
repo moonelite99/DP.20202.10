@@ -77,4 +77,6 @@ public class PopupScreen extends BaseScreenHandler {
 
     protected void setupFunctionality() throws Exception {
     }
+
+
 }

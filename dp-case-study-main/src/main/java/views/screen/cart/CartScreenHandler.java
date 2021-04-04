@@ -22,13 +22,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
+import views.screen.DisplayNextBaseScreen;
 import views.screen.ViewsConfig;
 import views.screen.popup.PopupScreen;
 import views.screen.shipping.ShippingScreenHandler;
 
-public class CartScreenHandler extends BaseScreenHandler {
+public class CartScreenHandler extends DisplayNextBaseScreen {
 	private static Logger LOGGER = Utils.getInstance().getLogger(CartScreenHandler.class.getName());
-
+	PlaceOrderController placeOrderController;
 	@FXML
 	private ImageView aimsImage;
 
@@ -66,6 +67,8 @@ public class CartScreenHandler extends BaseScreenHandler {
 		}
 	}
 
+
+
 	protected void setupFunctionality() throws Exception {
 		// fix relative image path caused by fxml
 		File file = new File(ViewsConfig.IMAGE_PATH + "/Logo.png");
@@ -102,11 +105,20 @@ public class CartScreenHandler extends BaseScreenHandler {
 		displayCartWithMediaAvailability();
 		show();
 	}
+	@Override
+	protected void displayNextScreen(BaseScreenHandler baseScreenHandler) {
+         baseScreenHandler.setPreviousScreen(this);
+         baseScreenHandler.setHomeScreenHandler(homeScreenHandler);
+         baseScreenHandler.setBController(placeOrderController);
+         baseScreenHandler.setScreenTitle("Shipping Screen");
+	}
+
 
 	public void requestToPlaceOrder() throws SQLException, IOException {
 		try {
 			// create placeOrderController and process the order
-			PlaceOrderController placeOrderController = new PlaceOrderController();
+
+			placeOrderController=PlaceOrderController.getInstance();
 			if (placeOrderController.getListCartMedia().size() == 0){
 				PopupScreen.error("You don't have anything to place");
 				return;
@@ -123,11 +135,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 			// display shipping form
 			ShippingScreenHandler shippingScreenHandler = new ShippingScreenHandler(
 					this.stage, ViewsConfig.SHIPPING_SCREEN_PATH, order);
-			shippingScreenHandler.setPreviousScreen(this);
-			shippingScreenHandler.setHomeScreenHandler(homeScreenHandler);
-			shippingScreenHandler.setScreenTitle("Shipping Screen");
-			shippingScreenHandler.setBController(placeOrderController);
-			shippingScreenHandler.show();
+			showNextScreen(shippingScreenHandler);
 
 		} catch (MediaNotAvailableException e) {
 			// if some media are not available then display cart and break usecase Place Order

@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
+import views.screen.DisplayNextBaseScreen;
 import views.screen.ViewsConfig;
 import views.screen.payment.PaymentScreenHandler;
 import views.screen.popup.PopupScreen;
@@ -21,7 +22,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 // SOLID : vì vi phạm nguyên lý LSP VÀ ISP vì class kế thừa từ class cha BaseScreenHandler nhưng không overide các phương thức của class cha
-public class InvoiceScreenHandler extends BaseScreenHandler {
+public class InvoiceScreenHandler extends DisplayNextBaseScreen {
 
 	private static Logger LOGGER = Utils.getInstance().getLogger(InvoiceScreenHandler.class.getName());
 
@@ -105,11 +106,15 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 	@FXML
 	void confirmInvoice(MouseEvent event) throws IOException {
 		BaseScreenHandler paymentScreen = new PaymentScreenHandler(this.stage, ViewsConfig.PAYMENT_SCREEN_PATH, invoice);
-		paymentScreen.setBController(new PaymentController());
-		paymentScreen.setPreviousScreen(this);
-		paymentScreen.setHomeScreenHandler(homeScreenHandler);
-		paymentScreen.setScreenTitle("Payment Screen");
-		paymentScreen.show();
+		showNextScreen(paymentScreen);
 		LOGGER.info("Confirmed invoice");
+	}
+
+	@Override
+	protected void displayNextScreen(BaseScreenHandler baseScreenHandler) {
+		baseScreenHandler.setPreviousScreen(this);
+		baseScreenHandler.setHomeScreenHandler(homeScreenHandler);
+		baseScreenHandler.setScreenTitle("Payment Screen");
+		baseScreenHandler.setBController(new PaymentController());
 	}
 }

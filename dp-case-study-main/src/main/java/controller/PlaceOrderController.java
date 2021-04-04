@@ -34,6 +34,21 @@ public class PlaceOrderController extends BaseController {
      */
     private static Logger LOGGER = utils.Utils.getInstance().getLogger(PlaceOrderController.class.getName());
 
+    private static PlaceOrderController placeOrderController;
+    private PlaceOrderController(){
+
+    }
+
+    public static PlaceOrderController getInstance(){
+        if(placeOrderController==null){
+            placeOrderController=new PlaceOrderController();
+        }
+        return placeOrderController;
+
+    }
+
+
+
     /**
      * This method checks the availability of product when user click PlaceOrder button
      * @throws SQLException
