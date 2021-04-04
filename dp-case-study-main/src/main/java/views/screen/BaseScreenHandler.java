@@ -31,6 +31,20 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 		this.stage = stage;
 	}
 
+	protected BaseScreenHandler(Stage stage, String screenPath, Object objectData) throws IOException {
+		this(stage, screenPath);
+		try {
+			setupData(objectData);
+			setupFunctionality();
+		} catch (IOException ex) {
+			LOGGER.info(ex.getMessage());
+			this.popUpError();
+		} catch (Exception ex) {
+			LOGGER.info(ex.getMessage());
+			PopupScreen.error(ex.getMessage());
+		}
+	}
+
 	public void setPreviousScreen(BaseScreenHandler prev) {
 		this.prev = prev;
 	}
@@ -66,5 +80,14 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 	public void setHomeScreenHandler(HomeScreenHandler HomeScreenHandler) {
 		this.homeScreenHandler = HomeScreenHandler;
 	}
+
+	protected abstract void setupData(Object dto) throws Exception ;
+
+	protected abstract void setupFunctionality() throws Exception;
+
+	public void popUpError() throws IOException{
+		PopupScreen.error("Error when loading resources.");
+	}
+
 
 }

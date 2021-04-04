@@ -141,7 +141,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     public void show() {
         if (authenticationController.isAnonymousSession()) {
             btnLogin.setText("Login");
-            btnLogin.setOnMouseClicked(event -> redirectLoginScreen(event));
+            btnLogin.setOnMouseClicked(this::redirectLoginScreen);
         } else {
             btnLogin.setText("User");
             btnLogin.setOnMouseClicked(event -> {});
