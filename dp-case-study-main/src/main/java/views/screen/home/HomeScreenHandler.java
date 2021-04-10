@@ -15,7 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
@@ -48,8 +48,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
     @FXML
     private ImageView cartImage;
-
-    @FXML
+// clean code : các thuộc tính này không được sử dụng trong class
+ /*   @FXML
     private VBox vboxMedia1;
 
     @FXML
@@ -57,7 +57,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
     @FXML
     private VBox vboxMedia3;
-
+*/
     @FXML
     private HBox hboxMedia;
 
@@ -83,10 +83,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             PopupScreen.error(ex.getMessage());
         }
     }
-
-    public Label getNumMediaCartLabel(){
+// clean code : phương thức getNumMediaCartLabel không được sử dụng
+/*    public Label getNumMediaCartLabel(){
         return this.numMediaInCart;
-    }
+    }*/
 
     public HomeController getBController() {
         return (HomeController) super.getBController();
@@ -141,7 +141,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     public void show() {
         if (authenticationController.isAnonymousSession()) {
             btnLogin.setText("Login");
-            btnLogin.setOnMouseClicked(event -> redirectLoginScreen(event));
+            btnLogin.setOnMouseClicked(event -> redirectLoginScreen());
         } else {
             btnLogin.setText("User");
             btnLogin.setOnMouseClicked(event -> {});
@@ -169,7 +169,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         });
         while(!mediaItems.isEmpty()){
             hboxMedia.getChildren().forEach(node -> {
-                int vid = hboxMedia.getChildren().indexOf(node);
+
+                // clean code : biến vid không được sử dụng
+//                int vid = hboxMedia.getChildren().indexOf(node);
                 VBox vBox = (VBox) node;
                 while(vBox.getChildren().size()<3 && !mediaItems.isEmpty()){
                     MediaHandler media = (MediaHandler) mediaItems.get(0);
@@ -254,8 +256,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     }
 
 // Stamp coupling vì event ko được
+// clean code : do tham số event truyền vào nhưng không được sử dụng
     @FXML
-    void redirectLoginScreen(MouseEvent event) {
+//    void redirectLoginScreen(MouseEvent event) {
+      void redirectLoginScreen() {
         try {
             BaseScreenHandler loginScreen = new LoginScreenHandler(this.stage, ViewsConfig.LOGIN_SCREEN_PATH);
             loginScreen.setHomeScreenHandler(this);

@@ -31,7 +31,8 @@ public class Invoice {
     }
 
     //SOLID : vì vi phạm nguyên tắc SRP vì entity này chỉ cần tạo ra các đối tượng invoice mà ko nên có các phương thức như saveInvoice
-  // Clean code : phương thức saveInvoice() không sử dụng
+
+    // Clean code : phương thức saveInvoice() không sử dụng
  /*   public void saveInvoice(){
         
     }*/

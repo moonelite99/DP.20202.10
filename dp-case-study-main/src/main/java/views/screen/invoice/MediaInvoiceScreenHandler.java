@@ -7,24 +7,22 @@ import entity.order.OrderItem;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import views.screen.FXMLScreenHandler;
 import views.screen.ViewsConfig;
 
 public class MediaInvoiceScreenHandler extends FXMLScreenHandler{
-
-    @FXML
-    private HBox hboxMedia;
-
-    @FXML
-    private VBox imageLogoVbox;
+    // clean code : các thuộc tính không được sử dụng
+//    @FXML
+//    private HBox hboxMedia;
+//
+//    @FXML
+//    private VBox imageLogoVbox;
+//    @FXML
+//    private VBox description;
 
     @FXML
     private ImageView image;
 
-    @FXML
-    private VBox description;
 
     @FXML
     private Label title;
@@ -32,8 +30,8 @@ public class MediaInvoiceScreenHandler extends FXMLScreenHandler{
     @FXML
     private Label numOfProd;
 
-    @FXML
-    private Label labelOutOfStock;
+//    @FXML
+//    private Label labelOutOfStock;
 
     @FXML
     private Label price;

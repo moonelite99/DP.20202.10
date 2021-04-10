@@ -39,7 +39,6 @@ public class User {
   /*  public void setusername(String name) {
         this.name = name;
     }
-
     public String getEmail() {
         return this.email;
     }

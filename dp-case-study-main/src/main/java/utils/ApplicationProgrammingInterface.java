@@ -10,8 +10,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -52,6 +50,7 @@ public class ApplicationProgrammingInterface {
 		writer.close();
 		BufferedReader in;
 		String inputLine;
+		// clean code : vì  sử dụng số cụ thể 100 và 2 sẽ làm người dùng khó đọc và khó hiểu ý nghĩa, gây lỗi tiềm ẩn
 		if (conn.getResponseCode() / 100 == 2) {
 			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		} else {

@@ -71,6 +71,7 @@ public class PopupScreen extends BaseScreenHandler {
         delay.setOnFinished( event -> stage.close() );
         delay.play();
     }
+
 // cleann code : 2 phương thức này không được sử dụng
  /*   protected void setupData(Object dto) throws Exception {
     }
