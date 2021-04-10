@@ -57,16 +57,17 @@ public class Order {
         //Communication Cohesion vi 2 dong lenh chi lien ket voi nhau boi du lieu dung chung
     }
 
+// clean code : phương thức get không được sử dụng
+/*
     public List getOrderMediaList() {
         return orderMediaList;
     }
+    public int getTax() {
+        return tax;
+    }*/
 
     public int getSubtotal() {
         return subtotal;
-    }
-
-    public int getTax() {
-        return tax;
     }
 
     public int getTotal() {

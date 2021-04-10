@@ -229,7 +229,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             if (mediaInCart != null) {
                 mediaInCart.setQuantity(mediaInCart.getQuantity() + 1);
             } else {
-                CartItem cartItem = new CartItem(media, cart, requestQuantity, media.getPrice());
+                CartItem cartItem = new CartItem(media, requestQuantity, media.getPrice());
                 cart.addCartMedia(cartItem);
                 LOGGER.info("Added " + cartItem.getQuantity() + " " + media.getTitle() + " to cart");
             }

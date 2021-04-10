@@ -44,6 +44,8 @@ public class LoginScreenHandler extends BaseScreenHandler{
     }
     
     // stamp coupling vì ham setupData truyen vao dto nhung khong su dung
+
+// clean code : tham số dto truyền vào nhưng không sử dụng
     protected void setupData(Object dto) throws Exception {
     }
 

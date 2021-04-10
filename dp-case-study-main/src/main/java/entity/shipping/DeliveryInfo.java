@@ -25,6 +25,8 @@ public class DeliveryInfo {
     // Communication Cohesion vì Phương thức calculateShippingFee() không liên quan đến Class này
     //SOLID : vi phạm nguyên lý OCP , DIP vì phụ thuộc trực tiếp vào Class distanceCalculator nên sau này những thay đổi trong tương lai hàm calculateDistance sẽ làm thay đổi class DeliveryInfo
 
+
+//    public int calculateShippingFee(Order order) {
     public int calculateShippingFee(Order order) {
         int distance = distanceCalculator.calculateDistance(address, province);
         return (int) (distance * 1.2);

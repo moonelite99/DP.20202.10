@@ -18,8 +18,8 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 public class ApplicationProgrammingInterface {
-
-	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+// clean code : DATE_FORMATTẺ không được sử dụng
+//	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	private static Logger LOGGER = Utils.getInstance().getLogger(Utils.class.getName());
 
 	public static String get(String url, String token) throws Exception {

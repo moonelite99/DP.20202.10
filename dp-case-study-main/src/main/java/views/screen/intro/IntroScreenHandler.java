@@ -25,7 +25,7 @@ public class IntroScreenHandler extends BaseScreenHandler {
         super(stage, screenPath);
 
         try {
-            setupData(null);
+            setupData();
             setupFunctionality();
         } catch (IOException ex) {
             LOGGER.info(ex.getMessage());
@@ -37,7 +37,9 @@ public class IntroScreenHandler extends BaseScreenHandler {
     }
 
     // stamp coupling vì ham setupData truyen vao dto nhung khong su dung
-    protected void setupData(Object dto) throws Exception {
+    // clean code : tham số dto không được sử dụng
+//    protected void setupData(Object dto) throws Exception {
+    protected void setupData() throws Exception {
         return;
     }
 

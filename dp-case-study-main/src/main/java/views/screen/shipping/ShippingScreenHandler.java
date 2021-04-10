@@ -138,9 +138,12 @@ public class ShippingScreenHandler extends DisplayNextBaseScreen {
  */
 
 //SOLID : vì vi phạm Nguyên lý DIP vì phương thức notifyError() nên được implements từ 1 class Abstract Notify riêng
+// clean code : phương thức notify không được sử dụng
+	/*
 	public void notifyError(){
 		// TODO: implement later on if we need
 	}
+*/
 
 
 }
