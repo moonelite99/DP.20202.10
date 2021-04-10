@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
+import views.screen.DisplayNextBaseScreen;
 import views.screen.ViewsConfig;
 import views.screen.invoice.InvoiceScreenHandler;
 import views.screen.popup.PopupScreen;
@@ -26,7 +27,7 @@ import java.util.HashMap;
 import java.util.logging.Logger;
 
 // SOLID : vì vi phạm nguyên lý LSP VÀ ISP vì class kế thừa từ class cha BaseScreenHandler nhưng không overide các phương thức của class cha
-public class ShippingScreenHandler extends BaseScreenHandler {
+public class ShippingScreenHandler extends DisplayNextBaseScreen {
 
 	private static final Logger LOGGER = Utils.getInstance().getLogger(ShippingScreenHandler.class.getName());
 
@@ -80,8 +81,19 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 				firstTime.setValue(false); // Variable value changed for future references
 			}
 		});
+	}
+
+	@Override
+	protected void displayNextScreen(BaseScreenHandler baseScreenHandler) {
+		baseScreenHandler.setPreviousScreen(this);
+		baseScreenHandler.setHomeScreenHandler(homeScreenHandler);
+		baseScreenHandler.setScreenTitle("Invoice Screen");
+		baseScreenHandler.setBController(getBController());
 
 	}
+
+
+
 
 	@FXML
 	void submitDeliveryInfo(MouseEvent event) throws IOException, InterruptedException, SQLException {
@@ -92,11 +104,7 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 		// create invoice screen
 		Invoice invoice = getBController().createInvoice(order);
 		BaseScreenHandler InvoiceScreenHandler = new InvoiceScreenHandler(this.stage, ViewsConfig.INVOICE_SCREEN_PATH, invoice);
-		InvoiceScreenHandler.setPreviousScreen(this);
-		InvoiceScreenHandler.setHomeScreenHandler(homeScreenHandler);
-		InvoiceScreenHandler.setScreenTitle("Invoice Screen");
-		InvoiceScreenHandler.setBController(getBController());
-		InvoiceScreenHandler.show();
+		showNextScreen(InvoiceScreenHandler);
 	}
 
 	public void preprocessDeliveryInfo() throws IOException, InterruptedException {
@@ -123,6 +131,8 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 	public PlaceOrderController getBController(){
 		return (PlaceOrderController) super.getBController();
 	}
+
+
 /*
 /   Coincidental Cohesion vì phương thức notifyError() này không liên quan đến Module này, cần viết trong mục error riêng
  */
@@ -131,5 +141,6 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 	public void notifyError(){
 		// TODO: implement later on if we need
 	}
+
 
 }

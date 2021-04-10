@@ -63,4 +63,12 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 		this.homeScreenHandler = HomeScreenHandler;
 	}
 
+//	public abstract   void displayScreen(BaseScreenHandler baseScreenHandler);
+//
+//	public final void displayNextScreen(BaseScreenHandler baseScreenHandler){
+//		displayScreen(baseScreenHandler);
+//		show();
+//	}
+
+
 }
