@@ -24,9 +24,10 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
-public class MediaHandler extends FXMLScreenHandler {
+// Clean Code: vi truoc do class duoc dat ten khong ro
+public class CartMediaHandler extends FXMLScreenHandler {
 
-	private static Logger LOGGER = Utils.getInstance().getLogger(MediaHandler.class.getName());
+	private static Logger LOGGER = Utils.getInstance().getLogger(CartMediaHandler.class.getName());
 
 	@FXML
 	protected HBox hboxMedia;
@@ -59,7 +60,7 @@ public class MediaHandler extends FXMLScreenHandler {
 	private Spinner<Integer> spinner;
 	private CartScreenHandler cartScreen;
 
-	public MediaHandler(String screenPath, CartScreenHandler cartScreen) throws IOException {
+	public CartMediaHandler(String screenPath, CartScreenHandler cartScreen) throws IOException {
 		super(screenPath);
 		this.cartScreen = cartScreen;
 		hboxMedia.setAlignment(Pos.CENTER);

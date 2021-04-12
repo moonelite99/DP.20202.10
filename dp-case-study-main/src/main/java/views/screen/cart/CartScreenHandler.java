@@ -59,10 +59,10 @@ public class CartScreenHandler extends BaseScreenHandler {
 			setupFunctionality();
 		} catch (IOException ex) {
 			LOGGER.info(ex.getMessage());
-			PopupScreen.error("Error when loading resources.");
+			PopupScreen.showErrorPopup("Error when loading resources.");
 		} catch (Exception ex) {
 			LOGGER.info(ex.getMessage());
-			PopupScreen.error(ex.getMessage());
+			PopupScreen.showErrorPopup(ex.getMessage());
 		}
 	}
 
@@ -108,7 +108,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 			// create placeOrderController and process the order
 			PlaceOrderController placeOrderController = new PlaceOrderController();
 			if (placeOrderController.getListCartMedia().size() == 0){
-				PopupScreen.error("You don't have anything to place");
+				PopupScreen.showErrorPopup("You don't have anything to place");
 				return;
 			}
 
@@ -165,7 +165,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 
 				// display the attribute of vboxCart media
 				CartItem cartItem = (CartItem) cm;
-				MediaHandler mediaCartScreen = new MediaHandler(ViewsConfig.CART_MEDIA_PATH, this);
+				CartMediaHandler mediaCartScreen = new CartMediaHandler(ViewsConfig.CART_MEDIA_PATH, this);
 				mediaCartScreen.setCartItem(cartItem);
 
 				// add spinner

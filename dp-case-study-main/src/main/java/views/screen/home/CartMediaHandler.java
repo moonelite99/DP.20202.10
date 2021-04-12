@@ -21,7 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class MediaHandler extends FXMLScreenHandler implements Observable {
+// Clean Code: vi truoc do class duoc dat ten khong ro
+public class CartMediaHandler extends FXMLScreenHandler implements Observable {
 
     @FXML
     protected ImageView mediaImage;
@@ -41,11 +42,11 @@ public class MediaHandler extends FXMLScreenHandler implements Observable {
     @FXML
     protected Button addToCartBtn;
 
-    private static Logger LOGGER = Utils.getInstance().getLogger(MediaHandler.class.getName());
+    private static Logger LOGGER = Utils.getInstance().getLogger(CartMediaHandler.class.getName());
     private Media media;
     private List<Observer> observerList;
 
-    public MediaHandler(String screenPath, Media media) throws SQLException, IOException{
+    public CartMediaHandler(String screenPath, Media media) throws SQLException, IOException{
         super(screenPath);
         this.media = media;
         this.observerList = new ArrayList<>();

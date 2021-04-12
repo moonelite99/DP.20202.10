@@ -37,17 +37,20 @@ public class PopupScreen extends BaseScreenHandler {
         return popup;
     }
 
-    public static void success(String message) throws IOException{
+    // Clean Code: vi truoc do phuong thuc duoc dat ten khong ro nghia
+    public static void showSuccessPopup(String message) throws IOException{
         popup(message, ViewsConfig.IMAGE_PATH + "/" + "tickgreen.png", true)
                 .show(true);
     }
 
-    public static void error(String message) throws IOException{
+    // Clean Code: vi truoc do phuong thuc duoc dat ten khong ro nghia
+    public static void showErrorPopup(String message) throws IOException{
         popup(message, ViewsConfig.IMAGE_PATH + "/" + "tickerror.png", false)
                 .show(false);
     }
 
-    public static PopupScreen loading(String message) throws IOException{
+    // Clean Code: vi truoc do phuong thuc duoc dat ten khong ro nghia
+    public static PopupScreen createLoadingPopup(String message) throws IOException{
         return popup(message, ViewsConfig.IMAGE_PATH + "/" + "loading.gif", true);
     }
 
