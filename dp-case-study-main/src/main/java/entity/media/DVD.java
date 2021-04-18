@@ -1,9 +1,9 @@
 package entity.media;
 
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.List;
+
 
 public class DVD extends Media {
 
@@ -14,10 +14,10 @@ public class DVD extends Media {
     String subtitles;
     Date releasedDate;
     String filmType;
+// clean code : phương thức khỏi tạo này không được sử dụng
+  /*  public DVD() throws SQLException{
 
-    public DVD() throws SQLException{
-
-    }
+    }*/
 
     public DVD(int id, String title, String category, int price, int quantity, String type, String discType,
             String director, int runtime, String studio, String subtitles, Date releasedDate, String filmType) throws SQLException{
@@ -34,8 +34,8 @@ public class DVD extends Media {
     public String getDiscType() {
         return this.discType;
     }
-
-    public DVD setDiscType(String discType) {
+// clean code : phương thức get set không được sử dụng
+  /*  public DVD setDiscType(String discType) {
         this.discType = discType;
         return this;
     }
@@ -47,7 +47,7 @@ public class DVD extends Media {
     public DVD setDirector(String director) {
         this.director = director;
         return this;
-    }
+    }*/
 
     public int getRuntime() {
         return this.runtime;
@@ -57,15 +57,15 @@ public class DVD extends Media {
         this.runtime = runtime;
         return this;
     }
-
-    public String getStudio() {
+// clean code : phương thức get set không được sử dụng
+ /*   public String getStudio() {
         return this.studio;
     }
 
     public DVD setStudio(String studio) {
         this.studio = studio;
         return this;
-    }
+    }*/
 
     public String getSubtitles() {
         return this.subtitles;

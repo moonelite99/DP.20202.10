@@ -8,7 +8,7 @@ import entity.shipping.DeliveryInfo;
 import entity.order.OrderItem;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
+
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Utils;
@@ -18,6 +18,7 @@ import views.screen.ViewsConfig;
 import views.screen.payment.PaymentScreenHandler;
 import views.screen.popup.PopupScreen;
 
+import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
@@ -26,8 +27,10 @@ public class InvoiceScreenHandler extends DisplayNextBaseScreen {
 
 	private static Logger LOGGER = Utils.getInstance().getLogger(InvoiceScreenHandler.class.getName());
 
+
 	@FXML
 	private Label pageTitle;
+
 
 	@FXML
 	private Label name;
@@ -102,6 +105,7 @@ public class InvoiceScreenHandler extends DisplayNextBaseScreen {
 	protected void setupFunctionality() throws Exception {
 		return;
 	}
+
 
 	@FXML
 	void confirmInvoice(MouseEvent event) throws IOException {

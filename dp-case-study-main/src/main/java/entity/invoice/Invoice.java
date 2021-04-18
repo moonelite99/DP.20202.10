@@ -6,10 +6,11 @@ public class Invoice {
 
     private Order order;
     private int amount;
-    
-    public Invoice(){
 
-    }
+// Clean code : bỏ phương thức Invoice() vid không sử dụng
+//    public Invoice(){
+//
+//    }
 
     //SOLID : vi phạm nguyên lý DIP VÀ OCP phương thức này có tham số là 1 class cụ thể Order nếu sau này xuất hiện loại đơn hàng khác thì ảnh hưởng đến mã nguồn
     public Invoice(Order order){
@@ -30,7 +31,9 @@ public class Invoice {
     }
 
     //SOLID : vì vi phạm nguyên tắc SRP vì entity này chỉ cần tạo ra các đối tượng invoice mà ko nên có các phương thức như saveInvoice
-    public void saveInvoice(){
+
+    // Clean code : phương thức saveInvoice() không sử dụng
+ /*   public void saveInvoice(){
         
-    }
+    }*/
 }

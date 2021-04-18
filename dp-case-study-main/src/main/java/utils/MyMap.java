@@ -61,7 +61,10 @@ public class MyMap extends LinkedHashMap<String, Object> {
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 */
-	
+
+	/*
+/    Content coupling vì hàm toMyMap () sử dụng setAccessible(true) để thay đổi sự truy cập
+ */
 	public static Map<String, Object> toMyMap(Object obj) throws IllegalArgumentException, IllegalAccessException {
 		Map<String, Object> map = new MyMap();
 		List<Field> fields = new ArrayList<>();
@@ -120,6 +123,59 @@ public class MyMap extends LinkedHashMap<String, Object> {
 		offset = result.length() + 2; // update iterator with the term and the 2 double quotes
 		return sb.toString();
 	}
+
+	public static String getKey(String str, int i){
+		String key;
+		try {
+			key = getNextTerm(str, i);
+		} catch (Exception ex) {
+			throw new IllegalArgumentException("Cannot resolve the input.");
+		}
+		if (key == null) {
+			throw new IllegalArgumentException("Cannot resolve the input.");
+		}
+		return key;
+	}
+
+	public static void getColon(String str, int i,StringBuilder sb){
+		sb.append(str.charAt(i));
+		if (str.charAt(i) != ':') {
+			throw new IllegalArgumentException("Cannot resolve the input.");
+		}
+
+	}
+
+	public static Object getValue(String str, int i,StringBuilder sb){
+		Object value;
+		if (str.charAt(i) == '{') {
+			value = toMyMap(str, i);
+			sb.append(str.subSequence(i, i + offset));
+			i += offset;
+			offset = 0;
+		} else if (str.charAt(i) == '"') {
+			try {
+				value = getNextTerm(str, i);
+			} catch (Exception ex) {
+				throw new IllegalArgumentException("Cannot resolve the input.");
+			}
+			if (value == null) {
+				throw new IllegalArgumentException("Cannot resolve the input.");
+			}
+			sb.append(str.subSequence(i, i + offset));
+			i += offset;
+			offset = 0;
+		} else {
+			throw new IllegalArgumentException("Cannot resolve the input.");
+		}
+
+
+		return value;
+	}
+
+
+
+
+
 	/**
 	 * Return a {@link MyMap MyMap} that represents the interested substring in a {@link String String}.
 	 * 
@@ -130,9 +186,10 @@ public class MyMap extends LinkedHashMap<String, Object> {
 	 * @return the term as {@link MyMap MyMap}
 	 * @throws IllegalArgumentException
 	 */
+
 	public static MyMap toMyMap(String str, int idx) throws IllegalArgumentException {
 		if (str == null || str.length() < 2 || str.charAt(idx) != '{') {
-			throw new IllegalArgumentException("Cannot resolve the input.");
+			throw new IllegalArgumentException("Cannot resolve the input1.");
 		} else if (idx >= str.length()) {
 			return null;
 		}
@@ -150,7 +207,9 @@ public class MyMap extends LinkedHashMap<String, Object> {
 					throw new IllegalArgumentException("Cannot resolve the input.");
 				}
 				// get key
-				String key;
+				// Clean code :	đoạn code dưới có thể tách riêng ra thành 1 hàm để tránh thân hàm quá dài, khó bảo trì
+
+               /* String key;
 				try {
 					key = getNextTerm(str, i);
 				} catch (Exception ex) {
@@ -158,21 +217,24 @@ public class MyMap extends LinkedHashMap<String, Object> {
 				}
 				if (key == null) {
 					throw new IllegalArgumentException("Cannot resolve the input.");
-				}
-
+				}*/
+				String key=	getKey(str,i);
 				sb.append(str.subSequence(i, i + offset));
-
 				i += offset;
 				offset = 0;
 
 				// check colon
-				sb.append(str.charAt(i));
-				if (str.charAt(i) != ':') {
-					throw new IllegalArgumentException("Cannot resolve the input.");
-				}
+// Clean code :	đoạn code dưới có thể tách riêng ra thành 1 hàm để tránh thân hàm quá dài, khó bảo trì
+//				sb.append(str.charAt(i));
+//				if (str.charAt(i) != ':') {
+//					throw new IllegalArgumentException("Cannot resolve the input 4.");
+//				}
+				getColon(str,i,sb);
 				i++;
+
 				// get value
-				Object value;
+
+				Object value ;
 				if (str.charAt(i) == '{') {
 					value = toMyMap(str, i);
 					sb.append(str.subSequence(i, i + offset));
@@ -193,6 +255,7 @@ public class MyMap extends LinkedHashMap<String, Object> {
 				} else {
 					throw new IllegalArgumentException("Cannot resolve the input.");
 				}
+
 				//
 				root.put(key, value);
 				if (str.charAt(i) == ',') {
@@ -205,6 +268,7 @@ public class MyMap extends LinkedHashMap<String, Object> {
 					throw new IllegalArgumentException("Cannot resolve the input.");
 				}
 			}
+
 			offset = sb.toString().length();
 		} catch (Exception e) {
 			e.printStackTrace();

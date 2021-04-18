@@ -4,6 +4,7 @@ import common.exception.ExpiredSessionException;
 import common.exception.FailLoginException;
 import dao.user.UserDAO;
 import entity.user.User;
+import utils.Config;
 import utils.Utils;
 
 import java.nio.charset.StandardCharsets;
@@ -37,8 +38,10 @@ public class AuthenticationController extends BaseController {
 /    common coupling vì hàm getMainUser sử dụng chung global data từ class SessionInformation
 
  */
+    // clean code : nên chuyển các điều kiện so sánh vào 1 hàm vì biểu thức so sánh hiện tại dài, khó tái sử dụng
     public User getMainUser() throws ExpiredSessionException {
-        if (SessionInformation.getInstance().getMainUser() == null || SessionInformation.getInstance().getExpiredTime() == null || SessionInformation.getInstance().getExpiredTime().isBefore(LocalDateTime.now())) {
+
+        if (SessionInformation.getInstance().checkUserExit() || SessionInformation.getInstance().isExpired()) {
             logout();
             throw new ExpiredSessionException();
         } else return SessionInformation.getInstance().getMainUser().cloneInformation();
@@ -53,7 +56,10 @@ public class AuthenticationController extends BaseController {
             User user = new UserDAO().authenticate(email, md5(password));
             if (Objects.isNull(user)) throw new FailLoginException();
             SessionInformation.getInstance().setMainUser(user);
-            SessionInformation.getInstance().setExpiredTime(LocalDateTime.now().plusHours(24));
+            // Clean code : vì sử số trực tiếp trong code gây khó đọc hiểu, sau này khi muốn thay đổi sẽ phải tìm kiếm trên toàn bộ source code để thay đổi
+            // nên cần thay bằng 1 biến hằng số (static final )
+            //SessionInformation.getInstance().setExpiredTime(LocalDateTime.now().plusHours(24));
+            SessionInformation.getInstance().setExpiredTime(LocalDateTime.now().plusHours(Config.PLUS_HOUR));
         } catch (SQLException ex) {
             throw new FailLoginException();
         }
@@ -67,7 +73,6 @@ public class AuthenticationController extends BaseController {
     public void logout() {
         SessionInformation.getInstance().setMainUser(null);
         SessionInformation.getInstance().setExpiredTime(null);
-
     }
 
 
@@ -90,8 +95,11 @@ public class AuthenticationController extends BaseController {
             byte[] hash = md.digest(message.getBytes(StandardCharsets.UTF_8));
             // converting byte array to Hexadecimal String
             StringBuilder sb = new StringBuilder(2 * hash.length);
+            //Clean code : Đặt tên biến không rõ ràng như các biến  0xff,02x gây khó đọc hiểu code, dễ nhầm lẫn,
+            // khi cần thay đổi thì phải tìm kiếm ở toàn bộ source để thay đổi, nên cầy thay thế bằng các biến hằng số (static final )
             for (byte b : hash) {
-                sb.append(String.format("%02x", b & 0xff));
+//              sb.append(String.format("%02x", b & 0xff));
+                sb.append(String.format(Config.HEXADECIMAL, b & Config.HEXA_VALUE));
             }
             digest = sb.toString();
         } catch (NoSuchAlgorithmException ex) {
