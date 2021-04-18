@@ -5,6 +5,7 @@ import entity.invoice.Invoice;
 import entity.order.Order;
 import entity.shipping.DeliveryInfo;
 import org.example.DistanceCalculator;
+import utils.ValidatorUtils;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -77,77 +78,6 @@ public class PlaceOrderController extends BaseController {
      * @throws InterruptedException
      * @throws IOException
      */
-// Coincidental Cohesion vì phương thức processDeliveryInfo() không liên quan đến nghiệp vụ của class PlaceOrderController
-// mà nên tách ra 1 module riêng
-
-    public DeliveryInfo processDeliveryInfo(HashMap info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
-        LOGGER.info("Process Delivery Info");
-        LOGGER.info(info.toString());
-        DeliveryInfo deliveryInfo = new DeliveryInfo(
-                String.valueOf(info.get("name")),
-                String.valueOf(info.get("phone")),
-                String.valueOf(info.get("province")),
-                String.valueOf(info.get("address")),
-                String.valueOf(info.get("instructions")),
-                new DistanceCalculator());
-        validateDeliveryInfo(deliveryInfo);
-        System.out.println(deliveryInfo.getProvince());
-        return deliveryInfo;
-    }
 
 
-    /**
-   * The method validates the info
-   * @param info
-   * @throws InterruptedException
-   * @throws IOException
-   */
-
-
-/*
-/      Logical cohesion vì các phương thức validate như validateDeliveryInfo(),validatePhoneNumber(),validateName(),validateAddress()
-      cùng xử lý logic là validate nên ta cần tách ra viết 1 phương thức validate rồi để các phương thức kia override lại
-
- */
-
-
-    // SOLID : vi phạm nguyên lý OCP vì sau này cần thay đổi info để validate thì phần code xử lý cũng phải thay đổi
-    // Clean code: Parameter nên dùng là DeliveryInfo
-    public void validateDeliveryInfo(DeliveryInfo info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
-        if (isValidPhoneNumber(info.getPhone())
-        || isValidName(info.getName())
-        || isValidAddress(info.getAddress()))
-            return;
-        else throw new InvalidDeliveryInfoException();
-    }
-
-    // Clean Code: đặt tên sai nghĩa nên chuyển validatePhoneNumber -> isValidPhoneNumber
-    public boolean isValidPhoneNumber(String phoneNumber) {
-        if (phoneNumber.length() != 10) return false;
-        if (!phoneNumber.startsWith("0")) return false;
-        try {
-            Integer.parseInt(phoneNumber);
-        } catch (NumberFormatException e) {
-            return false;
-        }
-        return true;
-    }
-
-    // Clean Code: đặt tên sai nghĩa nên chuyển validateName -> isValidName
-    public boolean isValidName(String name) {
-        if (Objects.isNull(name)) return false;
-        String patternString = "^[a-zA-Z\\s]*$";
-        Pattern pattern = Pattern.compile(patternString);
-        Matcher matcher = pattern.matcher(name);
-        return matcher.matches();
-    }
-
-    // Clean Code: đặt tên sai nghĩa nên chuyển validateAddress -> isValidAddress
-    public boolean isValidAddress(String address) {
-        if (Objects.isNull(address)) return false;
-        String patternString = "^[a-zA-Z\\s]*$";
-        Pattern pattern = Pattern.compile(patternString);
-        Matcher matcher = pattern.matcher(address);
-        return matcher.matches();
-    }
 }

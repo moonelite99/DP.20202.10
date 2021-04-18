@@ -14,7 +14,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.example.DistanceCalculator;
 import utils.Utils;
+import utils.ValidatorUtils;
 import views.screen.BaseScreenHandler;
 import views.screen.ViewsConfig;
 import views.screen.invoice.InvoiceScreenHandler;
@@ -110,13 +112,53 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 		DeliveryInfo deliveryInfo;
 		try {
 			// process and validate delivery info
-			deliveryInfo = getBController().processDeliveryInfo(messages);
+			deliveryInfo = processDeliveryInfo(messages);
 		} catch (InvalidDeliveryInfoException e) {
 			// TODO: implement pop up screen
 			throw new InvalidDeliveryInfoException(e.getMessage());
 		}
-
 		order.setDeliveryInfo(deliveryInfo);
+	}
+
+	// Coincidental Cohesion vì phương thức processDeliveryInfo() không liên quan đến nghiệp vụ của class PlaceOrderController
+// mà nên tách ra 1 module riêng
+
+	public DeliveryInfo processDeliveryInfo(HashMap info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
+		LOGGER.info("Process Delivery Info");
+		LOGGER.info(info.toString());
+		DeliveryInfo deliveryInfo = new DeliveryInfo(
+				String.valueOf(info.get("name")),
+				String.valueOf(info.get("phone")),
+				String.valueOf(info.get("province")),
+				String.valueOf(info.get("address")),
+				String.valueOf(info.get("instructions")),
+				new DistanceCalculator());
+		validateDeliveryInfo(deliveryInfo);
+		System.out.println(deliveryInfo.getProvince());
+		return deliveryInfo;
+	}
+
+
+	/**
+	 * The method validates the info
+	 * @param info
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
+
+
+/*
+/      Logical cohesion vì các phương thức validate như validateDeliveryInfo(),validatePhoneNumber(),validateName(),validateAddress()
+      cùng xử lý logic là validate nên ta cần tách ra viết 1 phương thức validate rồi để các phương thức kia override lại
+ */
+	// SOLID : vi phạm nguyên lý OCP vì sau này cần thay đổi info để validate thì phần code xử lý cũng phải thay đổi
+	// Clean code: Parameter nên dùng là DeliveryInfo
+	public void validateDeliveryInfo(DeliveryInfo info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
+		if (ValidatorUtils.isValidPhoneNumber(info.getPhone())
+				|| ValidatorUtils.isValidName(info.getName())
+				|| ValidatorUtils.isValidAddress(info.getAddress()))
+			return;
+		else throw new InvalidDeliveryInfoException();
 	}
 
 
