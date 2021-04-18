@@ -44,4 +44,15 @@ public class SessionInformation {
     public void setExpiredTime(LocalDateTime expiredTime) {
         this.expiredTime = expiredTime;
     }
+
+    public boolean checkUserExit(){
+        return this.getMainUser()!=null;
+    }
+
+
+    public boolean isExpired(){
+        return  this.expiredTime!=null  ? (this.expiredTime.isBefore((LocalDateTime.now()))) :false ;
+    }
+
+
 }

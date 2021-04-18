@@ -25,7 +25,7 @@ import views.screen.BaseScreenHandler;
 import views.screen.ViewsConfig;
 import views.screen.cart.CartScreenHandler;
 import views.screen.popup.PopupScreen;
-
+import javafx.scene.input.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -33,6 +33,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
+
+
 
 
 // SOLID : vì vi phạm nguyên lý LSP VÀ ISP vì class kế thừa từ class cha BaseScreenHandler nhưng không overide các phương thức của class cha
@@ -48,8 +50,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
     @FXML
     private ImageView cartImage;
-// clean code : các thuộc tính này không được sử dụng trong class
- /*   @FXML
+
+  @FXML
     private VBox vboxMedia1;
 
     @FXML
@@ -57,7 +59,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
     @FXML
     private VBox vboxMedia3;
-*/
+
     @FXML
     private HBox hboxMedia;
 
@@ -93,7 +95,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     }
 
     // stamp coupling vì ham setupData truyen vao dto nhung khong su dung
-    protected void setupData(Object dto) throws Exception {
+
+     protected void setupData(Object dto) throws Exception {
+
         setBController(new HomeController());
         this.authenticationController = new AuthenticationController();
         try{
@@ -141,7 +145,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     public void show() {
         if (authenticationController.isAnonymousSession()) {
             btnLogin.setText("Login");
-            btnLogin.setOnMouseClicked(event -> redirectLoginScreen());
+            btnLogin.setOnMouseClicked(event -> redirectLoginScreen(event));
         } else {
             btnLogin.setText("User");
             btnLogin.setOnMouseClicked(event -> {});
@@ -169,9 +173,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         });
         while(!mediaItems.isEmpty()){
             hboxMedia.getChildren().forEach(node -> {
-
-                // clean code : biến vid không được sử dụng
-//                int vid = hboxMedia.getChildren().indexOf(node);
+               int vid = hboxMedia.getChildren().indexOf(node);
                 VBox vBox = (VBox) node;
                 while(vBox.getChildren().size()<3 && !mediaItems.isEmpty()){
                     MediaHandler media = (MediaHandler) mediaItems.get(0);
@@ -186,7 +188,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     private void addMenuItem(int position, String text, MenuButton menuButton){
         MenuItem menuItem = new MenuItem();
         Label label = new Label();
-        label.prefWidthProperty().bind(menuButton.widthProperty().subtract(31));
+        // Clean code : vì sử số trực tiếp trong code gây khó đọc hiểu, sau này khi muốn thay đổi sẽ phải tìm kiếm trên toàn bộ source code để thay đổi
+        // nên cần thay bằng 1 biến hằng số (static final )  SUBTRACT_VALUE
+//        label.prefWidthProperty().bind(menuButton.widthProperty().subtract(31));
+        label.prefWidthProperty().bind(menuButton.widthProperty().subtract(ViewsConfig.SUBTRACT_VALUE));
         label.setText(text);
         label.setTextAlignment(TextAlignment.RIGHT);
         menuItem.setGraphic(label);
@@ -256,10 +261,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     }
 
 // Stamp coupling vì event ko được
-// clean code : do tham số event truyền vào nhưng không được sử dụng
+
     @FXML
-//    void redirectLoginScreen(MouseEvent event) {
-      void redirectLoginScreen() {
+   void redirectLoginScreen(MouseEvent event) {
+
         try {
             BaseScreenHandler loginScreen = new LoginScreenHandler(this.stage, ViewsConfig.LOGIN_SCREEN_PATH);
             loginScreen.setHomeScreenHandler(this);

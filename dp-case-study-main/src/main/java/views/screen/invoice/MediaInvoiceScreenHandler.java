@@ -7,18 +7,20 @@ import entity.order.OrderItem;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import views.screen.FXMLScreenHandler;
 import views.screen.ViewsConfig;
 
 public class MediaInvoiceScreenHandler extends FXMLScreenHandler{
-    // clean code : các thuộc tính không được sử dụng
-//    @FXML
-//    private HBox hboxMedia;
-//
-//    @FXML
-//    private VBox imageLogoVbox;
-//    @FXML
-//    private VBox description;
+
+    @FXML
+    private HBox hboxMedia;
+
+    @FXML
+    private VBox imageLogoVbox;
+    @FXML
+    private VBox description;
 
     @FXML
     private ImageView image;
@@ -30,8 +32,8 @@ public class MediaInvoiceScreenHandler extends FXMLScreenHandler{
     @FXML
     private Label numOfProd;
 
-//    @FXML
-//    private Label labelOutOfStock;
+    @FXML
+    private Label labelOutOfStock;
 
     @FXML
     private Label price;
@@ -53,8 +55,12 @@ public class MediaInvoiceScreenHandler extends FXMLScreenHandler{
         numOfProd.setText(String.valueOf(orderItem.getQuantity()));
         setImage(image, orderItem.getMedia().getImageURL());
 		image.setPreserveRatio(false);
-		image.setFitHeight(90);
-		image.setFitWidth(83);
+        // Clean code : vì sử số trực tiếp trong code gây khó đọc hiểu, sau này khi muốn thay đổi sẽ phải tìm kiếm trên toàn bộ source code để thay đổi
+        // nên cần thay bằng 1 biến hằng số (static final )  HEIGHT_MEDIA_INVOICE và WIDTH_MEDIA_INVOICE
+//		image.setFitHeight(90);
+//		image.setFitWidth(83);
+        image.setFitHeight(ViewsConfig.HEIGHT_MEDIA_INVOICE);
+        image.setFitWidth(ViewsConfig.WIDTH_MEDIA_INVOICE);
     }
 
 }

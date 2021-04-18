@@ -5,6 +5,7 @@ import entity.invoice.Invoice;
 import entity.order.Order;
 import entity.shipping.DeliveryInfo;
 import org.example.DistanceCalculator;
+import utils.Config;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -128,15 +129,25 @@ public class PlaceOrderController extends BaseController {
 
     // SOLID : vi phạm nguyên lý OCP vì sau này cần thay đổi info để validate thì phần code xử lý cũng phải thay đổi
     public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
-        if (validatePhoneNumber(info.get("phone"))
-        || validateName(info.get("name"))
-        || validateAddress(info.get("address"))) return;
+    // Clean code : khong nen viet cac dieu kien kiem tra dai, gay kho hieu ma nen chuyen thanh cac bien kiem tra
+        boolean isPhoneNumber=validatePhoneNumber(info.get("phone"));
+        boolean isName=validateInfoUser(info.get("name"));
+        boolean isAddress=validateInfoUser(info.get("address"));
+//        if (validatePhoneNumber(info.get("phone"))
+//        || validateName(info.get("name"))
+//        || validateAddress(info.get("address"))) return;
+        if(isPhoneNumber||isName||isAddress) return;
+
         else throw new InvalidDeliveryInfoException();
     }
 
 
     public boolean validatePhoneNumber(String phoneNumber) {
-        if (phoneNumber.length() != 10) return false;
+
+//Clean code : vì sử số trực tiếp trong code gây khó đọc hiểu, sau này khi muốn thay đổi sẽ phải tìm kiếm trên toàn bộ source code để thay đổi
+// nên cần thay bằng 1 biến hằng số (static final )
+//        if (phoneNumber.length() != 10) return false;
+        if (phoneNumber.length() != Config.PHONE_LENGTH) return false;
         if (!phoneNumber.startsWith("0")) return false;
         try {
             Integer.parseInt(phoneNumber);
@@ -145,8 +156,8 @@ public class PlaceOrderController extends BaseController {
         }
         return true;
     }
-    
-    public boolean validateName(String name) {
+ // Clean code : bị duplicode    nên viết thành 1 hàm
+  /*  public boolean validateName(String name) {
         if (Objects.isNull(name)) return false;
         String patternString = "^[a-zA-Z\\s]*$";
         Pattern pattern = Pattern.compile(patternString);
@@ -159,6 +170,14 @@ public class PlaceOrderController extends BaseController {
         String patternString = "^[a-zA-Z\\s]*$";
         Pattern pattern = Pattern.compile(patternString);
         Matcher matcher = pattern.matcher(address);
+        return matcher.matches();
+    }*/
+
+    public boolean validateInfoUser(String text) {
+        if (Objects.isNull(text)) return false;
+        String patternString = "^[a-zA-Z\\s]*$";
+        Pattern pattern = Pattern.compile(patternString);
+        Matcher matcher = pattern.matcher(text);
         return matcher.matches();
     }
 }

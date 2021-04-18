@@ -30,9 +30,9 @@ import java.util.logging.Logger;
 public class ShippingScreenHandler extends DisplayNextBaseScreen {
 
 	private static final Logger LOGGER = Utils.getInstance().getLogger(ShippingScreenHandler.class.getName());
-//
-//	@FXML
-//	private Label screenTitle;
+
+	@FXML
+	private Label screenTitle;
 
 	@FXML
 	private TextField name;
@@ -92,21 +92,19 @@ public class ShippingScreenHandler extends DisplayNextBaseScreen {
 
 	}
 
-
-/*// clean code : submitDeliveryInfo  nhưng không được sử dụng
+	// clean code : submitDeliveryInfo  nhưng không được sử dụng
 
 	@FXML
 	void submitDeliveryInfo(MouseEvent event) throws IOException, InterruptedException, SQLException {
 
 		// validate delivery info and prepare order info
 		preprocessDeliveryInfo();
-		
 		// create invoice screen
 		Invoice invoice = getBController().createInvoice(order);
 		BaseScreenHandler InvoiceScreenHandler = new InvoiceScreenHandler(this.stage, ViewsConfig.INVOICE_SCREEN_PATH, invoice);
 		showNextScreen(InvoiceScreenHandler);
 	}
-*/
+
 
 	public void preprocessDeliveryInfo() throws IOException, InterruptedException {
 		// add info to messages

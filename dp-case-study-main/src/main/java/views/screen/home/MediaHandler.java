@@ -10,7 +10,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import utils.Utils;
+
 import views.screen.FXMLScreenHandler;
 import views.screen.ViewsConfig;
 
@@ -19,7 +19,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+
+
+
 
 public class MediaHandler extends FXMLScreenHandler implements Observable {
 
@@ -66,15 +68,23 @@ public class MediaHandler extends FXMLScreenHandler implements Observable {
         // set the cover image of media
         File file = new File(media.getImageURL());
         Image image = new Image(file.toURI().toString());
-        mediaImage.setFitHeight(160);
-        mediaImage.setFitWidth(152);
+        // Clean code : vì sử số trực tiếp trong code gây khó đọc hiểu, sau này khi muốn thay đổi sẽ phải tìm kiếm trên toàn bộ source code để thay đổi
+        // nên cần thay bằng 1 biến hằng số (static final )  HEIGHT và WIDTH
+//      mediaImage.setFitHeight(160);
+//      mediaImage.setFitWidth(152);
+        mediaImage.setFitHeight(ViewsConfig.HEIGHT);
+        mediaImage.setFitWidth(ViewsConfig.WIDTH);
         mediaImage.setImage(image);
 
         mediaTitle.setText(media.getTitle());
         mediaPrice.setText(ViewsConfig.getCurrencyFormat(media.getPrice()));
         mediaAvail.setText(Integer.toString(media.getQuantity()));
+
         spinnerChangeNumber.setValueFactory(
-            new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1)
+                // Clean code : vì sử số trực tiếp trong code gây khó đọc hiểu, sau này khi muốn thay đổi sẽ phải tìm kiếm trên toàn bộ source code để thay đổi
+                // nên cần thay bằng 1 biến hằng số (static final )
+           // new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1)
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(ViewsConfig.MIN_SPINNER_VALUE, ViewsConfig.MAX_SPINNER_VALUE, ViewsConfig.INITIAL_SPINNER_VALUE)
         );
 
         setImage(mediaImage, media.getImageURL());

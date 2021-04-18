@@ -15,9 +15,10 @@ import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.DisplayNextBaseScreen;
 import views.screen.ViewsConfig;
-
+import views.screen.payment.PaymentScreenHandler;
 import views.screen.popup.PopupScreen;
 
+import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
@@ -26,10 +27,10 @@ public class InvoiceScreenHandler extends DisplayNextBaseScreen {
 
 	private static Logger LOGGER = Utils.getInstance().getLogger(InvoiceScreenHandler.class.getName());
 
-/*
+
 	@FXML
 	private Label pageTitle;
-*/
+
 
 	@FXML
 	private Label name;
@@ -106,13 +107,12 @@ public class InvoiceScreenHandler extends DisplayNextBaseScreen {
 	}
 
 
-	// clean code : tham số event không được sử dụng trong phương thức này phương thức này không đưuọc sử dụng
-/*	@FXML
+	@FXML
 	void confirmInvoice(MouseEvent event) throws IOException {
 		BaseScreenHandler paymentScreen = new PaymentScreenHandler(this.stage, ViewsConfig.PAYMENT_SCREEN_PATH, invoice);
 		showNextScreen(paymentScreen);
 		LOGGER.info("Confirmed invoice");
-	}*/
+	}
 
 	@Override
 	protected void displayNextScreen(BaseScreenHandler baseScreenHandler) {

@@ -12,6 +12,8 @@ public class DeliveryInfo {
     protected String shippingInstructions;
     protected DistanceCalculator distanceCalculator;
 
+
+
     public DeliveryInfo(String name, String phone, String province, String address, String shippingInstructions, DistanceCalculator distanceCalculator) {
         this.name = name;
         this.phone = phone;
@@ -29,7 +31,10 @@ public class DeliveryInfo {
 //    public int calculateShippingFee(Order order) {
     public int calculateShippingFee(Order order) {
         int distance = distanceCalculator.calculateDistance(address, province);
-        return (int) (distance * 1.2);
+// Clean code : vì sử số trực tiếp trong code gây khó đọc hiểu, sau này khi muốn thay đổi sẽ phải tìm kiếm trên toàn bộ source code để thay đổi
+// nên cần thay bằng 1 biến hằng số (static final )
+    //    return (int) (distance * 1.2);
+        return (int) (distance * ShippingConfigs.HANG_SO);
     }
 
     public String getName() {

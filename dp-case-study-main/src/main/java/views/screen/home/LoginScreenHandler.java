@@ -62,9 +62,8 @@ public class LoginScreenHandler extends BaseScreenHandler{
             PopupScreen.error(ex.getMessage());
         }
     }
-    // Coincidental cohesion hàm này nên để ra util 
+
     @FXML
-    // clean code :
     void backToHomeScreen(MouseEvent event) throws IOException, InterruptedException, SQLException {
         this.homeScreenHandler.show();
     }

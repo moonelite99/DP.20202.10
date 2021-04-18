@@ -50,8 +50,11 @@ public class ApplicationProgrammingInterface {
 		writer.close();
 		BufferedReader in;
 		String inputLine;
-		// clean code : vì  sử dụng số cụ thể 100 và 2 sẽ làm người dùng khó đọc và khó hiểu ý nghĩa, gây lỗi tiềm ẩn
-		if (conn.getResponseCode() / 100 == 2) {
+		// clean code : vì  sử dụng số cụ thể 100 và 2 sẽ làm người dùng khó đọc và khó hiểu ý nghĩa, gây lỗi tiềm ẩn,
+		// khi muốn thay đổi thì phải tìm kiếm trên toàn bộ source code gây tốn nhiều thời gian,nên cần thay bằng biến constant
+//		if (conn.getResponseCode() / 100 ==2) {
+		int ResponseCode=conn.getResponseCode()/100;
+		if (ResponseCode==Config.STATUS_CODE) {
 			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		} else {
 			in = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
