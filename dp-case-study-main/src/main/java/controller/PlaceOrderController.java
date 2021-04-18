@@ -83,7 +83,6 @@ public class PlaceOrderController extends BaseController {
     public DeliveryInfo processDeliveryInfo(HashMap info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         LOGGER.info("Process Delivery Info");
         LOGGER.info(info.toString());
-        validateDeliveryInfo(info);
         DeliveryInfo deliveryInfo = new DeliveryInfo(
                 String.valueOf(info.get("name")),
                 String.valueOf(info.get("phone")),
@@ -91,6 +90,7 @@ public class PlaceOrderController extends BaseController {
                 String.valueOf(info.get("address")),
                 String.valueOf(info.get("instructions")),
                 new DistanceCalculator());
+        validateDeliveryInfo(deliveryInfo);
         System.out.println(deliveryInfo.getProvince());
         return deliveryInfo;
     }
@@ -112,15 +112,17 @@ public class PlaceOrderController extends BaseController {
 
 
     // SOLID : vi phạm nguyên lý OCP vì sau này cần thay đổi info để validate thì phần code xử lý cũng phải thay đổi
-    public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
-        if (validatePhoneNumber(info.get("phone"))
-        || validateName(info.get("name"))
-        || validateAddress(info.get("address"))) return;
+    // Clean code: Parameter nên dùng là DeliveryInfo
+    public void validateDeliveryInfo(DeliveryInfo info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
+        if (isValidPhoneNumber(info.getPhone())
+        || isValidName(info.getName())
+        || isValidAddress(info.getAddress()))
+            return;
         else throw new InvalidDeliveryInfoException();
     }
 
-
-    public boolean validatePhoneNumber(String phoneNumber) {
+    // Clean Code: đặt tên sai nghĩa nên chuyển validatePhoneNumber -> isValidPhoneNumber
+    public boolean isValidPhoneNumber(String phoneNumber) {
         if (phoneNumber.length() != 10) return false;
         if (!phoneNumber.startsWith("0")) return false;
         try {
@@ -130,8 +132,9 @@ public class PlaceOrderController extends BaseController {
         }
         return true;
     }
-    
-    public boolean validateName(String name) {
+
+    // Clean Code: đặt tên sai nghĩa nên chuyển validateName -> isValidName
+    public boolean isValidName(String name) {
         if (Objects.isNull(name)) return false;
         String patternString = "^[a-zA-Z\\s]*$";
         Pattern pattern = Pattern.compile(patternString);
@@ -139,7 +142,8 @@ public class PlaceOrderController extends BaseController {
         return matcher.matches();
     }
 
-    public boolean validateAddress(String address) {
+    // Clean Code: đặt tên sai nghĩa nên chuyển validateAddress -> isValidAddress
+    public boolean isValidAddress(String address) {
         if (Objects.isNull(address)) return false;
         String patternString = "^[a-zA-Z\\s]*$";
         Pattern pattern = Pattern.compile(patternString);
