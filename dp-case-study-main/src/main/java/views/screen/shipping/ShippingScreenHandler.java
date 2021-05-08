@@ -53,16 +53,7 @@ public class ShippingScreenHandler extends DisplayNextBaseScreen {
 
 	public ShippingScreenHandler(Stage stage, String screenPath, Order order) throws IOException {
 		super(stage, screenPath);
-		try {
-			setupData(order);
-			setupFunctionality();
-		} catch (IOException ex) {
-			LOGGER.info(ex.getMessage());
-			PopupScreen.error("Error when loading resources.");
-		} catch (Exception ex) {
-			LOGGER.info(ex.getMessage());
-			PopupScreen.error(ex.getMessage());
-		}
+		setupDataAndFunction(order);
 	}
 /*
 /   Common coupling vì hàm setupData sử dụng global data của lớp ShippingConfigs là PROVINCES, RUSH_SUPPORT_PROVINCES_INDEX

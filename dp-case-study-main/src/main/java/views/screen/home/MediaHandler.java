@@ -22,7 +22,7 @@ import java.util.List;
 
 
 
-
+// Clean code :Với yêu cầu thêm 1 mặt hàng media mới thì khi thay đổi các thuộc tính trong lớp Media thì cũng phải thay đổi code hiển thị sản phẩm trong  lớp này
 public class MediaHandler extends FXMLScreenHandler implements Observable {
 
     @FXML
@@ -83,7 +83,7 @@ public class MediaHandler extends FXMLScreenHandler implements Observable {
         spinnerChangeNumber.setValueFactory(
                 // Clean code : vì sử số trực tiếp trong code gây khó đọc hiểu, sau này khi muốn thay đổi sẽ phải tìm kiếm trên toàn bộ source code để thay đổi
                 // nên cần thay bằng 1 biến hằng số (static final )
-           // new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1)
+                // new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1)
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(ViewsConfig.MIN_SPINNER_VALUE, ViewsConfig.MAX_SPINNER_VALUE, ViewsConfig.INITIAL_SPINNER_VALUE)
         );
 
