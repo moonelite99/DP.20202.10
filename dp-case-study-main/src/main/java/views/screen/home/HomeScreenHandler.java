@@ -101,7 +101,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             this.homeItems = new ArrayList<>();
             for (Object object : medium) {
                 Media media = (Media)object;
-                CartMediaHandler m = new CartMediaHandler(ViewsConfig.HOME_MEDIA_PATH, media);
+                HomeCartMediaHandler m = new HomeCartMediaHandler(ViewsConfig.HOME_MEDIA_PATH, media);
                 m.attach(this);
                 this.homeItems.add(m);
             }
@@ -172,7 +172,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
                 int vid = hboxMedia.getChildren().indexOf(node);
                 VBox vBox = (VBox) node;
                 while(vBox.getChildren().size()<3 && !mediaItems.isEmpty()){
-                    CartMediaHandler media = (CartMediaHandler) mediaItems.get(0);
+                    HomeCartMediaHandler media = (HomeCartMediaHandler) mediaItems.get(0);
                     vBox.getChildren().add(media.getContent());
                     mediaItems.remove(media);
                 }
@@ -198,7 +198,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             // filter only media with the choosen category
             List filteredItems = new ArrayList<>();
             homeItems.forEach(me -> {
-                CartMediaHandler media = (CartMediaHandler) me;
+                HomeCartMediaHandler media = (HomeCartMediaHandler) me;
                 if (media.getMedia().getTitle().toLowerCase().startsWith(text.toLowerCase())){
                     filteredItems.add(media);
                 }
@@ -212,12 +212,12 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
     @Override
     public void update(Observable observable) {
-        if (observable instanceof CartMediaHandler) update((CartMediaHandler) observable);
+        if (observable instanceof HomeCartMediaHandler) update((HomeCartMediaHandler) observable);
     }
 /*
 /  common coupling vì phương thức update() sử dụng biến global của lớp SessionInformation là cartInstance
  */
-    private void update(CartMediaHandler mediaHandler) {
+    private void update(HomeCartMediaHandler mediaHandler) {
         int requestQuantity = mediaHandler.getRequestQuantity();
         Media media = mediaHandler.getMedia();
 

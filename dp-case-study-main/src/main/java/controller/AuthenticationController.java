@@ -35,7 +35,6 @@ public class AuthenticationController extends BaseController {
 
 /*
 /    common coupling vì hàm getMainUser sử dụng chung global data từ class SessionInformation
-
  */
     public User getMainUser() throws ExpiredSessionException {
         if (SessionInformation.getInstance().getMainUser() == null || SessionInformation.getInstance().getExpiredTime() == null || SessionInformation.getInstance().getExpiredTime().isBefore(LocalDateTime.now())) {

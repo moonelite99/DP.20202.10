@@ -42,9 +42,10 @@ public class PlaceOrderController extends BaseController {
     /*
 /   common coupling vì hàm placeOrder sử dụng data global của class SessionInformation
  */
-    public void placeOrder() throws SQLException {
+    public Order placeOrder() throws SQLException {
         // SessionInformation.cartInstance.checkAvailabilityOfProduct();
         SessionInformation.getInstance().getCartInstance().checkAvailabilityOfProduct();
+        return createOrder();
     }
 
     /**
@@ -55,9 +56,17 @@ public class PlaceOrderController extends BaseController {
     /*
     /   common coupling vì hàm createOrder sử dụng data global của class SessionInformation
     */
-    public Order createOrder() throws SQLException {
+    private Order createOrder() throws SQLException {
         // return new Order(SessionInformation.cartInstance);
         return new Order(SessionInformation.getInstance().getCartInstance());
+    }
+
+    /**
+     * clean code: tạo phương thức isEmptyCar
+     * @return
+     */
+    public boolean isEmptyCart(){
+        return this.getListCartMedia().size() == 0;
     }
 
     /**

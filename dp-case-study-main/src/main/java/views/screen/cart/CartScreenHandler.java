@@ -103,22 +103,24 @@ public class CartScreenHandler extends BaseScreenHandler {
 		show();
 	}
 
+	/**
+	 * clean code smell: tránh để lớp này biết quá nhiều về PlaceOrderController
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public void requestToPlaceOrder() throws SQLException, IOException {
 		try {
 			// create placeOrderController and process the order
 			PlaceOrderController placeOrderController = new PlaceOrderController();
-			if (placeOrderController.getListCartMedia().size() == 0){
+			if (placeOrderController.isEmptyCart()){
 				PopupScreen.showErrorPopup("You don't have anything to place");
 				return;
 			}
 
-			placeOrderController.placeOrder();
+			Order order = placeOrderController.placeOrder();
 			
 			// display available media
 			displayCartWithMediaAvailability();
-
-			// create order
-			Order order = placeOrderController.createOrder();
 
 			// display shipping form
 			ShippingScreenHandler shippingScreenHandler = new ShippingScreenHandler(
