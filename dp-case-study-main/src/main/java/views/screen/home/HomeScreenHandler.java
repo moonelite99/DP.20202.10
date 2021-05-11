@@ -36,7 +36,7 @@ import java.util.logging.Logger;
 
 
 
-
+// Clean code :
 // SOLID : vì vi phạm nguyên lý LSP VÀ ISP vì class kế thừa từ class cha BaseScreenHandler nhưng không overide các phương thức của class cha
 public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
@@ -74,16 +74,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
     public HomeScreenHandler(Stage stage, String screenPath) throws IOException{
         super(stage, screenPath);
-        try {
-            setupData(null);
-            setupFunctionality();
-        } catch (IOException ex) {
-            LOGGER.info(ex.getMessage());
-            PopupScreen.error("Error when loading resources.");
-        } catch (Exception ex) {
-            LOGGER.info(ex.getMessage());
-            PopupScreen.error(ex.getMessage());
-        }
+        setupDataAndFunction(null);
     }
 // clean code : phương thức getNumMediaCartLabel không được sử dụng
 /*    public Label getNumMediaCartLabel(){

@@ -27,16 +27,7 @@ public class LoginScreenHandler extends BaseScreenHandler{
 
     public LoginScreenHandler(Stage stage, String screenPath) throws IOException{
         super(stage, screenPath);
-        try {
-            setupData(null);
-            setupFunctionality();
-        } catch (IOException ex) {
-            LOGGER.info(ex.getMessage());
-            PopupScreen.error("Error when loading resources.");
-        } catch (Exception ex) {
-            LOGGER.info(ex.getMessage());
-            PopupScreen.error(ex.getMessage());
-        }
+        setupDataAndFunction(null);
     }
 
     public AuthenticationController getBController() {

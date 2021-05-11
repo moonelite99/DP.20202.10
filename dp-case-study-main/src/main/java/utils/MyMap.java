@@ -175,7 +175,6 @@ public class MyMap extends LinkedHashMap<String, Object> {
 
 
 
-
 	/**
 	 * Return a {@link MyMap MyMap} that represents the interested substring in a {@link String String}.
 	 * 

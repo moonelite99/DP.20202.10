@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import views.screen.FXMLScreenHandler;
 import views.screen.ViewsConfig;
 
+// Clean code :Với yêu cầu thêm 1 mặt hàng media mới thì khi thay đổi các thuộc tính trong lớp Media thì cũng phải thay đổi code hiển thị sản phẩm trong  lớp này
 public class MediaInvoiceScreenHandler extends FXMLScreenHandler{
 
     @FXML
