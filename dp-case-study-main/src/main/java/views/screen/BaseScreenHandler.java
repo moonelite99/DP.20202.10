@@ -63,11 +63,11 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 	public void setHomeScreenHandler(HomeScreenHandler HomeScreenHandler) {
 		this.homeScreenHandler = HomeScreenHandler;
 	}
-	protected   void setupData(Object dto) throws Exception {
 
+
+	protected   void setupData(Object dto) throws Exception {
 	}
 	protected void setupFunctionality() throws Exception {
-
 	}
 	// Clean code : Duplicode do các class view cùng sử dụng chung khối code bên dưới nên ta viết lại thành 1 hàm trong class BaseScreenHandler để tái sử dụng
 	public void setupDataAndFunction(Object dto) throws IOException{
