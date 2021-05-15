@@ -12,7 +12,11 @@ public class DeliveryInfo {
     protected String shippingInstructions;
     protected DistanceCalculator distanceCalculator;
 
+    private CalculatorShipFreeStrategy calculatorShipFreeStrategy;
 
+    public void setCalculatorShipFreeStrategy(CalculatorShipFreeStrategy calculatorShipFreeStrategy) {
+        this.calculatorShipFreeStrategy = calculatorShipFreeStrategy;
+    }
 
     public DeliveryInfo(String name, String phone, String province, String address, String shippingInstructions, DistanceCalculator distanceCalculator) {
         this.name = name;
@@ -28,13 +32,16 @@ public class DeliveryInfo {
     //SOLID : vi phạm nguyên lý OCP , DIP vì phụ thuộc trực tiếp vào Class distanceCalculator nên sau này những thay đổi trong tương lai hàm calculateDistance sẽ làm thay đổi class DeliveryInfo
 
 
-//    public int calculateShippingFee(Order order) {
     public int calculateShippingFee(Order order) {
         int distance = distanceCalculator.calculateDistance(address, province);
+        if(calculatorShipFreeStrategy==null){
+            this.calculatorShipFreeStrategy=new CalShippingFee() ;
+        }
+
 // Clean code : vì sử số trực tiếp trong code gây khó đọc hiểu, sau này khi muốn thay đổi sẽ phải tìm kiếm trên toàn bộ source code để thay đổi
 // nên cần thay bằng 1 biến hằng số (static final )
     //    return (int) (distance * 1.2);
-        return (int) (distance * ShippingConfigs.HANG_SO);
+        return (int) ( this.calculatorShipFreeStrategy.calculatorShippingFee(distance));
     }
 
     public String getName() {
