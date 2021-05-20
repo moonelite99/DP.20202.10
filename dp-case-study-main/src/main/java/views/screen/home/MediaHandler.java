@@ -20,7 +20,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-
+//Áp dụng Observer pattern
 public class MediaHandler extends FXMLScreenHandler implements Observable {
 
     @FXML
