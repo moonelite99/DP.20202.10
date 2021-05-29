@@ -2,6 +2,8 @@ package views.screen.cart;
 
 import common.exception.MediaUpdateException;
 import common.exception.ViewCartException;
+import common.interfaces.Observable;
+import common.interfaces.Observer;
 import controller.SessionInformation;
 import entity.cart.CartItem;
 import javafx.fxml.FXML;
@@ -21,10 +23,12 @@ import views.screen.ViewsConfig;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
-public class MediaHandler extends FXMLScreenHandler implements Observable{
+public class MediaHandler extends FXMLScreenHandler implements Observable {
 
 	private static Logger LOGGER = Utils.getInstance().getLogger(MediaHandler.class.getName());
 
@@ -132,6 +136,7 @@ public class MediaHandler extends FXMLScreenHandler implements Observable{
 		spinnerFX.setAlignment(Pos.CENTER);
 		spinnerFX.getChildren().add(this.spinner);
 	}
+
 	@Override
 	public void attach(Observer observer) {
 		observerList.add(observer);

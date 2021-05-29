@@ -3,6 +3,7 @@ package controller;
 import common.exception.InvalidDeliveryInfoException;
 import entity.invoice.Invoice;
 import entity.order.Order;
+import entity.shipping.AdapterDistance;
 import entity.shipping.DeliveryInfo;
 import org.example.DistanceCalculator;
 
@@ -105,7 +106,7 @@ public class PlaceOrderController extends BaseController {
                 String.valueOf(info.get("province")),
                 String.valueOf(info.get("address")),
                 String.valueOf(info.get("instructions")),
-                new DistanceCalculator());
+                new AdapterDistance());
         System.out.println(deliveryInfo.getProvince());
         return deliveryInfo;
     }
