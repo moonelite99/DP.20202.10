@@ -27,7 +27,7 @@ import views.screen.ViewsConfig;
 import views.screen.popup.PopupScreen;
 import views.screen.shipping.ShippingScreenHandler;
 
-public class CartScreenHandler extends DisplayNextBaseScreen {
+public class CartScreenHandler extends DisplayNextBaseScreen implements Observer  {
 	private static Logger LOGGER = Utils.getInstance().getLogger(CartScreenHandler.class.getName());
 	PlaceOrderController placeOrderController;
 	@FXML
@@ -57,10 +57,14 @@ public class CartScreenHandler extends DisplayNextBaseScreen {
 	public CartScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
 		setupDataAndFunction(null);
+
+	}
+	@Override
+	protected void setupData(Object dto) throws Exception {
+
 	}
 
-
-
+	@Override
 	protected void setupFunctionality() throws Exception {
 		// fix relative image path caused by fxml
 		File file = new File(ViewsConfig.IMAGE_PATH + "/Logo.png");
@@ -165,9 +169,9 @@ public class CartScreenHandler extends DisplayNextBaseScreen {
 
 				// display the attribute of vboxCart media
 				CartItem cartItem = (CartItem) cm;
-				MediaHandler mediaCartScreen = new MediaHandler(ViewsConfig.CART_MEDIA_PATH, this);
+				MediaHandler mediaCartScreen = new MediaHandler(ViewsConfig.CART_MEDIA_PATH);
 				mediaCartScreen.setCartItem(cartItem);
-
+				mediaCartScreen.attach(this);
 				// add spinner
 				vboxCart.getChildren().add(mediaCartScreen.getContent());
 			}
@@ -175,6 +179,21 @@ public class CartScreenHandler extends DisplayNextBaseScreen {
 			updateCartAmount();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void update(Observable observable) {
+		if (observable instanceof MediaHandler) update((MediaHandler) observable);
+	}
+
+	private void update(MediaHandler mediaHandler) {
+		try {
+			this.updateCart();
+			this.updateCartAmount();
+		} catch (SQLException exp) {
+			exp.printStackTrace();
+			throw new ViewCartException();
 		}
 	}
 }

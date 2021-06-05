@@ -208,6 +208,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         menuButton.getItems().add(position, menuItem);
     }
 
+    // áp dụng Observer design pattern : ỏ đây màn hình home là Observer còn các item nhỏ sẽ là các Subject.
     @Override
     public void update(Observable observable) {
         if (observable instanceof MediaHandler) update((MediaHandler) observable);
