@@ -57,9 +57,11 @@ public class CartScreenHandler extends DisplayNextBaseScreen implements Observer
 	public CartScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
 		setupDataAndFunction(null);
+
 	}
 	@Override
 	protected void setupData(Object dto) throws Exception {
+
 	}
 
 	@Override

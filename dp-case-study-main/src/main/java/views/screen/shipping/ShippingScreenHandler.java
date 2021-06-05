@@ -4,6 +4,7 @@ import common.exception.InvalidDeliveryInfoException;
 import controller.PlaceOrderController;
 import entity.invoice.Invoice;
 import entity.order.Order;
+import entity.shipping.CalShippingFee;
 import entity.shipping.DeliveryInfo;
 import entity.shipping.ShippingConfigs;
 import javafx.beans.property.BooleanProperty;
@@ -83,20 +84,19 @@ public class ShippingScreenHandler extends DisplayNextBaseScreen {
 
 	}
 
-
-
+	// clean code : submitDeliveryInfo  nhưng không được sử dụng
 
 	@FXML
 	void submitDeliveryInfo(MouseEvent event) throws IOException, InterruptedException, SQLException {
 
 		// validate delivery info and prepare order info
 		preprocessDeliveryInfo();
-		
 		// create invoice screen
 		Invoice invoice = getBController().createInvoice(order);
 		BaseScreenHandler InvoiceScreenHandler = new InvoiceScreenHandler(this.stage, ViewsConfig.INVOICE_SCREEN_PATH, invoice);
 		showNextScreen(InvoiceScreenHandler);
 	}
+
 
 	public void preprocessDeliveryInfo() throws IOException, InterruptedException {
 		// add info to messages
@@ -110,6 +110,7 @@ public class ShippingScreenHandler extends DisplayNextBaseScreen {
 		try {
 			// process and validate delivery info
 			deliveryInfo = getBController().processDeliveryInfo(messages);
+			deliveryInfo.setCalculatorShipFreeStrategy(new CalShippingFee());
 		} catch (InvalidDeliveryInfoException e) {
 			// TODO: implement pop up screen
 			throw new InvalidDeliveryInfoException(e.getMessage());
@@ -129,9 +130,11 @@ public class ShippingScreenHandler extends DisplayNextBaseScreen {
  */
 
 //SOLID : vì vi phạm Nguyên lý DIP vì phương thức notifyError() nên được implements từ 1 class Abstract Notify riêng
-	public void notifyError(){
+// clean code : phương thức notify không được sử dụng
+	/*public void notifyError(){
 		// TODO: implement later on if we need
 	}
+*/
 
 
 }

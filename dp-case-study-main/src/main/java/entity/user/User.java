@@ -35,18 +35,17 @@ public class User {
     public String getName() {
         return this.name;
     }
-
-    public void setusername(String name) {
+// clean code : các phương thức get set không sử dụng
+  /*  public void setusername(String name) {
         this.name = name;
     }
-
     public String getEmail() {
         return this.email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
+    }*/
 
     public String getAddress() {
         return this.address;

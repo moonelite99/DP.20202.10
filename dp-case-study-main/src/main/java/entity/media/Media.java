@@ -2,19 +2,19 @@ package entity.media;
 
 import dao.media.MediaDAO;
 import entity.db.AIMSDB;
-import utils.Utils;
+
 
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Logger;
+
 
 /**
  * The general media class, for another media it can be done by inheriting this class
  * @author nguyenlm
  */
 public class Media {
-
-    private static Logger LOGGER = Utils.getInstance().getLogger(Media.class.getName());
+// clean code : logger không được sử dụng trong class này
+//    private static Logger LOGGER = Utils.getInstance().getLogger(Media.class.getName());
 
     protected Statement stm;
     protected int id;
@@ -56,11 +56,11 @@ public class Media {
     public int getId() {
         return this.id;
     }
-
-    private Media setId(int id){
+// phương thức setter không được sử dụng
+ /*   private Media setId(int id){
         this.id = id;
         return this;
-    }
+    }*/
 
     public String getTitle() {
         return this.title;
@@ -92,11 +92,11 @@ public class Media {
     public String getImageURL(){
         return this.imageURL;
     }
-
-    public Media setMediaURL(String url){
+// clean code : phương thức setUrrl không được sử dụng
+ /*   public Media setMediaURL(String url){
         this.imageURL = url;
         return this;
-    }
+    }*/
 
     public Media setQuantity(int quantity) {
         this.quantity = quantity;

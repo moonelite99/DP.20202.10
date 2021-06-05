@@ -25,7 +25,6 @@ public class ResultScreenHandler extends BaseScreenHandler {
 		setupDataAndFunction(response);
 	}
 
-
 	protected void setupData(Object dto) throws Exception {
 		Map<String, String> response = (Map<String, String>) dto;
 		resultLabel.setText(response.get("RESULT"));

@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import views.screen.FXMLScreenHandler;
 import views.screen.ViewsConfig;
 
+// Clean code :Với yêu cầu thêm 1 mặt hàng media mới thì khi thay đổi các thuộc tính trong lớp Media thì cũng phải thay đổi code hiển thị sản phẩm trong  lớp này
 public class MediaInvoiceScreenHandler extends FXMLScreenHandler{
 
     @FXML
@@ -19,12 +20,12 @@ public class MediaInvoiceScreenHandler extends FXMLScreenHandler{
 
     @FXML
     private VBox imageLogoVbox;
+    @FXML
+    private VBox description;
 
     @FXML
     private ImageView image;
 
-    @FXML
-    private VBox description;
 
     @FXML
     private Label title;
@@ -55,8 +56,12 @@ public class MediaInvoiceScreenHandler extends FXMLScreenHandler{
         numOfProd.setText(String.valueOf(orderItem.getQuantity()));
         setImage(image, orderItem.getMedia().getImageURL());
 		image.setPreserveRatio(false);
-		image.setFitHeight(90);
-		image.setFitWidth(83);
+        // Clean code : vì sử số trực tiếp trong code gây khó đọc hiểu, sau này khi muốn thay đổi sẽ phải tìm kiếm trên toàn bộ source code để thay đổi
+        // nên cần thay bằng 1 biến hằng số (static final )  HEIGHT_MEDIA_INVOICE và WIDTH_MEDIA_INVOICE
+//		image.setFitHeight(90);
+//		image.setFitWidth(83);
+        image.setFitHeight(ViewsConfig.HEIGHT_MEDIA_INVOICE);
+        image.setFitWidth(ViewsConfig.WIDTH_MEDIA_INVOICE);
     }
 
 }
