@@ -9,6 +9,9 @@ import java.util.logging.Logger;
 
 import common.exception.MediaNotAvailableException;
 import common.exception.PlaceOrderException;
+import common.exception.ViewCartException;
+import common.interfaces.Observable;
+import common.interfaces.Observer;
 import controller.PlaceOrderController;
 import controller.ViewCartController;
 import entity.cart.CartItem;
@@ -27,7 +30,7 @@ import views.screen.ViewsConfig;
 import views.screen.popup.PopupScreen;
 import views.screen.shipping.ShippingScreenHandler;
 
-public class CartScreenHandler extends DisplayNextBaseScreen implements Observer  {
+public class CartScreenHandler extends DisplayNextBaseScreen implements Observer {
 	private static Logger LOGGER = Utils.getInstance().getLogger(CartScreenHandler.class.getName());
 	PlaceOrderController placeOrderController;
 	@FXML
