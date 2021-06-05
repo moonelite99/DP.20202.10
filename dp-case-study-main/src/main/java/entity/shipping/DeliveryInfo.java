@@ -10,15 +10,18 @@ public class DeliveryInfo {
     protected String province;
     protected String address;
     protected String shippingInstructions;
-    protected DistanceCalculator distanceCalculator;
-
+//    protected DistanceCalculator distanceCalculator;
+    protected CalcuDistance distanceCalculator;
+  
     private CalculatorShipFreeStrategy calculatorShipFreeStrategy;
 
     public void setCalculatorShipFreeStrategy(CalculatorShipFreeStrategy calculatorShipFreeStrategy) {
         this.calculatorShipFreeStrategy = calculatorShipFreeStrategy;
     }
 
-    public DeliveryInfo(String name, String phone, String province, String address, String shippingInstructions, DistanceCalculator distanceCalculator) {
+
+//    public DeliveryInfo(String name, String phone, String province, String address, String shippingInstructions, DistanceCalculator distanceCalculator) {
+    public DeliveryInfo(String name, String phone, String province, String address, String shippingInstructions, CalcuDistance distanceCalculator) {
         this.name = name;
         this.phone = phone;
         this.province = province;

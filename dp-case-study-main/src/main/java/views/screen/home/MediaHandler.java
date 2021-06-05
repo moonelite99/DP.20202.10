@@ -20,9 +20,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import java.util.logging.Logger;
+//Áp dụng Observer pattern
 
 // Clean code :Với yêu cầu thêm 1 mặt hàng media mới thì khi thay đổi các thuộc tính trong lớp Media thì cũng phải thay đổi code hiển thị sản phẩm trong  lớp này
+
 public class MediaHandler extends FXMLScreenHandler implements Observable {
 
     @FXML

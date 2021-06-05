@@ -3,6 +3,7 @@ package controller;
 import common.exception.InvalidDeliveryInfoException;
 import entity.invoice.Invoice;
 import entity.order.Order;
+import entity.shipping.AdapterDistance;
 import entity.shipping.DeliveryInfo;
 import org.example.DistanceCalculator;
 import utils.Config;
@@ -102,7 +103,7 @@ public class PlaceOrderController extends BaseController {
                 String.valueOf(info.get("province")),
                 String.valueOf(info.get("address")),
                 String.valueOf(info.get("instructions")),
-                new DistanceCalculator());
+                new AdapterDistance());
         System.out.println(deliveryInfo.getProvince());
         return deliveryInfo;
     }
@@ -115,7 +116,7 @@ public class PlaceOrderController extends BaseController {
    * @throws IOException
    */
 /*
-/      Logical cohesion vì các phương thức validate như validateDeliveryInfo(),validatePhoneNumber(),validateName(),validateAddress()
+/      Coincidental cohesion vì các phương thức validate như validateDeliveryInfo(),validatePhoneNumber(),validateName(),validateAddress()
       cùng xử lý logic là validate nên ta cần tách ra viết 1 phương thức validate rồi để các phương thức kia override lại
 */
     // SOLID : vi phạm nguyên lý OCP vì sau này cần thay đổi info để validate thì phần code xử lý cũng phải thay đổi
