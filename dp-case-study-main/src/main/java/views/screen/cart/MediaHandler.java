@@ -88,17 +88,10 @@ public class MediaHandler extends FXMLScreenHandler implements Observable {
 		// add delete button
 		btnDelete.setFont(ViewsConfig.REGULAR_FONT);
 		btnDelete.setOnMouseClicked(e -> {
-//			try {
 				SessionInformation.getInstance().getCartInstance().removeCartMedia(cartItem); // update user cart
-			//	cartScreen.updateCart(); // re-display user cart
 				notifyObservers();
 				LOGGER.info("Deleted " + cartItem.getMedia().getTitle() + " from the cart");
-//			} catch (SQLException exp) {
-//				exp.printStackTrace();
-//				throw new ViewCartException();
-//			}
 		});
-
 		initializeSpinner();
 	}
 
