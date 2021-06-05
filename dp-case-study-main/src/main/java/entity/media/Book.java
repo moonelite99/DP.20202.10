@@ -1,12 +1,8 @@
 package entity.media;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Date;
-import java.util.List;
 
-import entity.db.AIMSDB;
+import java.sql.SQLException;
+import java.util.Date;
 
 public class Book extends Media {
 
@@ -17,11 +13,11 @@ public class Book extends Media {
     int numOfPages;
     String language;
     String bookCategory;
-
-    public Book() throws SQLException{
+// clean code : phương thức book() không được sử dụng
+ /*   public Book() throws SQLException{
 
     }
-
+*/
     public Book(int id, String title, String category, int price, int quantity, String type, String author,
             String coverType, String publisher, Date publishDate, int numOfPages, String language,
             String bookCategory) throws SQLException{
@@ -58,14 +54,15 @@ public class Book extends Media {
         return this;
     }
 
-    public String getPublisher() {
+    // cleancode : hai phương thức không sử dụng
+ /*   public String getPublisher() {
         return this.publisher;
     }
 
     public Book setPublisher(String publisher) {
         this.publisher = publisher;
         return this;
-    }
+    }*/
 
     public Date getPublishDate() {
         return this.publishDate;
@@ -76,14 +73,16 @@ public class Book extends Media {
         return this;
     }
 
-    public int getNumOfPages() {
+// cleancode : hai phương thức get set này không sử dụng
+
+   /* public int getNumOfPages() {
         return this.numOfPages;
     }
 
     public Book setNumOfPages(int numOfPages) {
         this.numOfPages = numOfPages;
         return this;
-    }
+    }*/
 
     public String getLanguage() {
         return this.language;
@@ -93,15 +92,15 @@ public class Book extends Media {
         this.language = language;
         return this;
     }
-
-    public String getBookCategory() {
+// cleancode : phương thức không được sử dụng
+ /* *//*  public String getBookCategory() {
         return this.bookCategory;
     }
-
+*//*
     public Book setBookCategory(String bookCategory) {
         this.bookCategory = bookCategory;
         return this;
-    }
+    }*/
 
     @Override
     public String toString() {

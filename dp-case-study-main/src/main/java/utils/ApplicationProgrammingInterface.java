@@ -10,16 +10,14 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.logging.Logger;
 
 public class ApplicationProgrammingInterface {
-
-	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+// clean code : DATE_FORMATTẺ không được sử dụng
+//	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	private static Logger LOGGER = Utils.getInstance().getLogger(Utils.class.getName());
 
 	public static String get(String url, String token) throws Exception {
@@ -52,7 +50,11 @@ public class ApplicationProgrammingInterface {
 		writer.close();
 		BufferedReader in;
 		String inputLine;
-		if (conn.getResponseCode() / 100 == 2) {
+		// clean code : vì  sử dụng số cụ thể 100 và 2 sẽ làm người dùng khó đọc và khó hiểu ý nghĩa, gây lỗi tiềm ẩn,
+		// khi muốn thay đổi thì phải tìm kiếm trên toàn bộ source code gây tốn nhiều thời gian,nên cần thay bằng biến constant
+//		if (conn.getResponseCode() / 100 ==2) {
+		int ResponseCode=conn.getResponseCode()/100;
+		if (ResponseCode==Config.STATUS_CODE) {
 			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		} else {
 			in = new BufferedReader(new InputStreamReader(conn.getErrorStream()));

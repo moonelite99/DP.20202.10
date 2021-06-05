@@ -22,8 +22,8 @@ import java.util.Map;
  */
 
 /**
- * SOLID: // vi pham nguyen ly OCP: tuong lai co the them nhieu phuong thuc thanh toan thi code bi sua doi
- * SOLID: // vi pham DIP: vi phu thuoc vao CreditCard, nen phu thuoc AbstractPaymentMethod
+ * SOLID:  vi pham nguyen ly OCP: tuong lai co the them nhieu phuong thuc thanh toan thi code bi sua doi
+ * SOLID:  vi pham DIP: vi phu thuoc vao CreditCard, nen phu thuoc AbstractPaymentMethod
  */
 public class PaymentController extends BaseController {
 

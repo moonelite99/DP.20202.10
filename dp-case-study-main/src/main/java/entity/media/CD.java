@@ -1,9 +1,9 @@
 package entity.media;
 
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.List;
+
 
 public class CD extends Media {
 
@@ -11,11 +11,11 @@ public class CD extends Media {
     String recordLabel;
     String musicType;
     Date releasedDate;
-
-    public CD() throws SQLException{
+// clean code : phương thức khởi tạo không được sử dụng
+ /*   public CD() throws SQLException{
 
     }
-
+*/
     public CD(int id, String title, String category, int price, int quantity, String type, String artist,
             String recordLabel, String musicType, Date releasedDate) throws SQLException{
         super(id, title, category, price, quantity, type);
@@ -33,8 +33,8 @@ public class CD extends Media {
         this.artist = artist;
         return this;
     }
-
-    public String getRecordLabel() {
+// clean code : các phương thức get set này không được sử dụng
+   /* public String getRecordLabel() {
         return this.recordLabel;
     }
 
@@ -51,7 +51,7 @@ public class CD extends Media {
         this.musicType = musicType;
         return this;
     }
-
+*/
     public Date getReleasedDate() {
         return this.releasedDate;
     }

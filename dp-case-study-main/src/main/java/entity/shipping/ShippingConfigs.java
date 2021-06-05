@@ -19,4 +19,5 @@ public class ShippingConfigs {
             "Vĩnh Long", 	"Cần Thơ" };
 
     public static int[] RUSH_SUPPORT_PROVINCES_INDEX = {22, 48};
+    public static final  double HANG_SO = 1.2;
 }

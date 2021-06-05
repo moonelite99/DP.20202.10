@@ -35,6 +35,8 @@ public class LoginScreenHandler extends BaseScreenHandler{
     }
     
     // stamp coupling vì ham setupData truyen vao dto nhung khong su dung
+
+// clean code : tham số dto truyền vào nhưng không sử dụng
     protected void setupData(Object dto) throws Exception {
     }
 
@@ -51,7 +53,7 @@ public class LoginScreenHandler extends BaseScreenHandler{
             PopupScreen.error(ex.getMessage());
         }
     }
-    // Coincidental cohesion hàm này nên để ra util 
+
     @FXML
     void backToHomeScreen(MouseEvent event) throws IOException, InterruptedException, SQLException {
         this.homeScreenHandler.show();

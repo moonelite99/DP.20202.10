@@ -15,7 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
@@ -25,7 +25,7 @@ import views.screen.BaseScreenHandler;
 import views.screen.ViewsConfig;
 import views.screen.cart.CartScreenHandler;
 import views.screen.popup.PopupScreen;
-
+import javafx.scene.input.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -35,6 +35,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 
+
+// Clean code :
 // SOLID : vì vi phạm nguyên lý LSP VÀ ISP vì class kế thừa từ class cha BaseScreenHandler nhưng không overide các phương thức của class cha
 public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
@@ -49,7 +51,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     @FXML
     private ImageView cartImage;
 
-    @FXML
+  @FXML
     private VBox vboxMedia1;
 
     @FXML
@@ -74,17 +76,19 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         super(stage, screenPath);
         setupDataAndFunction(null);
     }
-
-    public Label getNumMediaCartLabel(){
+// clean code : phương thức getNumMediaCartLabel không được sử dụng
+/*    public Label getNumMediaCartLabel(){
         return this.numMediaInCart;
-    }
+    }*/
 
     public HomeController getBController() {
         return (HomeController) super.getBController();
     }
 
     // stamp coupling vì ham setupData truyen vao dto nhung khong su dung
-    protected void setupData(Object dto) throws Exception {
+
+     protected void setupData(Object dto) throws Exception {
+
         setBController(new HomeController());
         this.authenticationController = new AuthenticationController();
         try{
@@ -160,7 +164,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         });
         while(!mediaItems.isEmpty()){
             hboxMedia.getChildren().forEach(node -> {
-                int vid = hboxMedia.getChildren().indexOf(node);
+               int vid = hboxMedia.getChildren().indexOf(node);
                 VBox vBox = (VBox) node;
                 while(vBox.getChildren().size()<3 && !mediaItems.isEmpty()){
                     MediaHandler media = (MediaHandler) mediaItems.get(0);
@@ -175,7 +179,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     private void addMenuItem(int position, String text, MenuButton menuButton){
         MenuItem menuItem = new MenuItem();
         Label label = new Label();
-        label.prefWidthProperty().bind(menuButton.widthProperty().subtract(31));
+        // Clean code : vì sử số trực tiếp trong code gây khó đọc hiểu, sau này khi muốn thay đổi sẽ phải tìm kiếm trên toàn bộ source code để thay đổi
+        // nên cần thay bằng 1 biến hằng số (static final )  SUBTRACT_VALUE
+//        label.prefWidthProperty().bind(menuButton.widthProperty().subtract(31));
+        label.prefWidthProperty().bind(menuButton.widthProperty().subtract(ViewsConfig.SUBTRACT_VALUE));
         label.setText(text);
         label.setTextAlignment(TextAlignment.RIGHT);
         menuItem.setGraphic(label);
@@ -221,7 +228,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             if (mediaInCart != null) {
                 mediaInCart.setQuantity(mediaInCart.getQuantity() + 1);
             } else {
-                CartItem cartItem = new CartItem(media, cart, requestQuantity, media.getPrice());
+                CartItem cartItem = new CartItem(media, requestQuantity, media.getPrice());
                 cart.addCartMedia(cartItem);
                 LOGGER.info("Added " + cartItem.getQuantity() + " " + media.getTitle() + " to cart");
             }
@@ -246,8 +253,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     }
 
 // Stamp coupling vì event ko được
+
     @FXML
-    void redirectLoginScreen(MouseEvent event) {
+   void redirectLoginScreen(MouseEvent event) {
+
         try {
             BaseScreenHandler loginScreen = new LoginScreenHandler(this.stage, ViewsConfig.LOGIN_SCREEN_PATH);
             loginScreen.setHomeScreenHandler(this);

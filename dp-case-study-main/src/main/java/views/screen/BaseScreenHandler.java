@@ -64,6 +64,7 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 		this.homeScreenHandler = HomeScreenHandler;
 	}
 
+
 	protected   void setupData(Object dto) throws Exception {
 	}
 	protected void setupFunctionality() throws Exception {
