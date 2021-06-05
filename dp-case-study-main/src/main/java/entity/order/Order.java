@@ -51,7 +51,7 @@ public class Order {
         return deliveryInfo;
     }
 
-// Cohension :  ommunication Cohesion vi 2 dong lenh chi lien ket voi nhau boi du lieu dung chung
+// Cohesion :  Communication Cohesion vi 2 dong lenh chi lien ket voi nhau boi du lieu dung chung
     public void setDeliveryInfo(DeliveryInfo deliveryInfo) {
         this.deliveryInfo = deliveryInfo;
         this.shippingFees = deliveryInfo.calculateShippingFee(this);
