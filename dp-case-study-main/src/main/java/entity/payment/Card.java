@@ -1,5 +1,5 @@
 package entity.payment;
 
-public interface Credit {
+public interface Card {
 
 }

@@ -3,7 +3,7 @@ package entity.payment;
 /**
  * @author
  */
-public class CreditCard  implements Credit {
+public class CreditCard  implements Card {
 
     private String cardCode;
     private String owner;
