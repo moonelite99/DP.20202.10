@@ -4,6 +4,7 @@ import common.exception.InvalidDeliveryInfoException;
 import controller.PlaceOrderController;
 import entity.invoice.Invoice;
 import entity.order.Order;
+import entity.shipping.CalShippingFee;
 import entity.shipping.DeliveryInfo;
 import entity.shipping.ShippingConfigs;
 import javafx.beans.property.BooleanProperty;
@@ -109,6 +110,7 @@ public class ShippingScreenHandler extends DisplayNextBaseScreen {
 		try {
 			// process and validate delivery info
 			deliveryInfo = getBController().processDeliveryInfo(messages);
+			deliveryInfo.setCalculatorShipFreeStrategy(new CalShippingFee());
 		} catch (InvalidDeliveryInfoException e) {
 			// TODO: implement pop up screen
 			throw new InvalidDeliveryInfoException(e.getMessage());
