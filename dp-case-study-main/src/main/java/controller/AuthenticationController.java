@@ -96,10 +96,10 @@ public class AuthenticationController extends BaseController {
                 sb.append(String.format(Config.HEXADECIMAL, b & Config.HEXA_VALUE));
             }
             digest = sb.toString();
-        } catch (NoSuchAlgorithmException ex) {
+
+        } } catch (NoSuchAlgorithmException ex) {
             Utils.getInstance().getLogger(Utils.class.getName());
             digest = "";
-        }
         return digest;
     }
 */
