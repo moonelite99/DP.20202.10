@@ -118,6 +118,7 @@ public class InterbankPayloadConverter {
      * @author hieudm
      * @return the current time as {@link String String}.
      */
+    // Coincidental cohesion vì phương thức này không liên quan tới các phương thức khác trong class
     private String getToday() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
