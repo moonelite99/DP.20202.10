@@ -15,6 +15,9 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.logging.Logger;
 
+
+ //SOLID: Vi phạm nguyên tắc SRP. Vì thực hiện đến nhiều hơn một chức năng,  vừa  thực hiện get, post
+// vừa  tạo ra kết nối HTTP thông qua phương thức setupConnection, đồng thời cũng sử dụng method allMethod cho việc điều khiển truy cập 
 public class ApplicationProgrammingInterface {
 // clean code : DATE_FORMATTẺ không được sử dụng
 //	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");

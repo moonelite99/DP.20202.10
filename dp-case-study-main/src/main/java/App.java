@@ -25,21 +25,15 @@ public class App extends Application {
 		// Coincidental cohesion, nên tách thành phương thức
 		try {
 
+
 			// initialize the scene
-			BaseScreenHandler introScreen = new IntroScreenHandler(primaryStage, ViewsConfig.INTRO_SCREEN_PATH);
-			introScreen.show();
+			BaseScreenHandler introScreen = initialize(primaryStage);
 
 			// Load splash screen with fade in effect
-			FadeTransition fadeIn = new FadeTransition(Duration.seconds(2), introScreen.getContent());
-			fadeIn.setFromValue(0);
-			fadeIn.setToValue(1);
-			fadeIn.setCycleCount(1);
+			FadeTransition fadeIn = setupFadeInEffect(introScreen);
 
 			// Finish splash with fade out effect
-			FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), introScreen.getContent());
-			fadeOut.setFromValue(1);
-			fadeOut.setToValue(0);
-			fadeOut.setCycleCount(1);
+			FadeTransition fadeOut = setupFadeOutEffect(introScreen);
 
 			// After fade in, start fade out
 			fadeIn.play();
@@ -50,10 +44,8 @@ public class App extends Application {
 			// After fade out, load actual content
 			fadeOut.setOnFinished((e) -> {
 				try {
-					HomeScreenHandler homeHandler = new HomeScreenHandler(primaryStage, ViewsConfig.HOME_PATH);
-					homeHandler.setScreenTitle("Home Screen");
-					homeHandler.setImage();
-					homeHandler.show();
+					loadContent(primaryStage);
+
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -61,6 +53,35 @@ public class App extends Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	private BaseScreenHandler initialize(Stage primaryStage) throws IOException {
+		BaseScreenHandler introScreen = new IntroScreenHandler(primaryStage, ViewsConfig.INTRO_SCREEN_PATH);
+		introScreen.show();
+		return introScreen;
+	}
+
+	private FadeTransition setupFadeInEffect(BaseScreenHandler introScreen) {
+		FadeTransition fadeIn = new FadeTransition(Duration.seconds(2), introScreen.getContent());
+		fadeIn.setFromValue(0);
+		fadeIn.setToValue(1);
+		fadeIn.setCycleCount(1);
+		return fadeIn;
+	}
+
+	private FadeTransition setupFadeOutEffect(BaseScreenHandler introScreen) {
+		FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), introScreen.getContent());
+		fadeOut.setFromValue(1);
+		fadeOut.setToValue(0);
+		fadeOut.setCycleCount(1);
+		return fadeOut;
+	}
+
+	private void loadContent(Stage primaryStage) throws IOException {
+		HomeScreenHandler homeHandler = new HomeScreenHandler(primaryStage, ViewsConfig.HOME_PATH);
+		homeHandler.setScreenTitle("Home Screen");
+		homeHandler.setImage();
+		homeHandler.show();
 	}
 
 	public static void main(String[] args) {

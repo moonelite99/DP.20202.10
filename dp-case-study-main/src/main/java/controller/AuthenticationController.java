@@ -16,7 +16,7 @@ import java.util.Objects;
 /**
  * @author
  */
-
+//SOLID : vi phạm nguyên lý SRP vì class AuthenticationController thực hiện nhiều hơn 1 nhiệm vụ như vừa xác thực( login) vừa phải mã hóa  dữ liệu
 // SOLID : vì phạm nguyên lý ISP và LSP vì class AuthenticationController kế thừa lớp BaseController nhưng lại ko thực hiện (override ) các hành vi,phương thức của class cha là BaseController
 // Clean code : Large Class vì class AuthenticationController vừa làm nhiệm vụ authentication vừa phải mã hóa md5, nên tách ra 1 class utils để có thể tái sử dụng
 public class AuthenticationController extends BaseController {
@@ -80,7 +80,7 @@ public class AuthenticationController extends BaseController {
      * @return cipher text as {@link String String}.
      */
 // coincidental cohesion vì hàm md5() nên để lại class utils để controller gọi đến khi sử dụng
-// SOLID : vi phạm nguyên lý SRP vì class AuthenticationController thực hiện nhiều hơn 1 nhiệm vụ như vừa xác thực( login) vừa phải mã hóa  dữ liệu
+//
  /*
  *    private String md5(String message) {
         String digest = null;
