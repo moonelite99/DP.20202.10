@@ -1,5 +1,6 @@
-package dao.media;
+package dao.impl.media;
 
+import dao.abstracts.media.MediaDAO;
 import entity.db.AIMSDB;
 import entity.media.Media;
 
@@ -12,9 +13,9 @@ import java.util.List;
 /**
  * @author
  */
-public class MediaDAO {
+public class MediaDAOImpl implements MediaDAO {
 
-    public List getAllMedia() throws SQLException {
+    public final List<Media> getAllMedias() throws SQLException {
 
         AIMSDB aimsdb=AIMSDB.getAimsdb();
         Statement stm = aimsdb.getConnection().createStatement();
@@ -34,7 +35,7 @@ public class MediaDAO {
         return medium;
     }
 
-    public Media getMediaById(int id) throws SQLException {
+    public final Media getMediaById(int id) throws SQLException {
         String sql = "SELECT * FROM Media ;";
         Statement stm = AIMSDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery(sql);

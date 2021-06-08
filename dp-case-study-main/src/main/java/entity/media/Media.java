@@ -1,6 +1,7 @@
 package entity.media;
 
-import dao.media.MediaDAO;
+import dao.abstracts.media.MediaDAO;
+import dao.impl.media.MediaDAOImpl;
 import entity.db.AIMSDB;
 
 
@@ -46,7 +47,8 @@ public class Media {
     }
     //Procedural cohesion vi 2 khoi lenh chi lien ket voi nhau vi nam trong 1 trinh tu thuc hien
     public int getQuantity() throws SQLException {
-        int updated_quantity = new MediaDAO().getMediaById(id).quantity;
+        MediaDAO mediaDAO = new MediaDAOImpl();
+        int updated_quantity = mediaDAO.getMediaById(id).quantity;
         this.quantity = updated_quantity;
         return updated_quantity;
 

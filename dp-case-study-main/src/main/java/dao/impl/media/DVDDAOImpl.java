@@ -1,5 +1,6 @@
-package dao.media;
+package dao.impl.media;
 
+import dao.abstracts.media.DVDDAO;
 import entity.db.AIMSDB;
 import entity.media.DVD;
 import entity.media.Media;
@@ -7,14 +8,15 @@ import entity.media.Media;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author
  */
-public class DVDDAO extends MediaDAO {
+public class DVDDAOImpl extends MediaDAOImpl implements DVDDAO {
 
     @Override
-    public Media getMediaById(int id) throws SQLException {
+    public DVD findById(Integer id) throws SQLException {
         String sql = "SELECT * FROM "+
                 "aims.DVD " +
                 "INNER JOIN aims.Media " +
@@ -47,4 +49,25 @@ public class DVDDAO extends MediaDAO {
             throw new SQLException();
         }
     }
+
+    @Override
+    public void insert(DVD dvd) {
+
+    }
+
+    @Override
+    public void update(DVD dvd) {
+
+    }
+
+    @Override
+    public void delete(DVD dvd) {
+
+    }
+
+    @Override
+    public List<DVD> find() {
+        return null;
+    }
+
 }

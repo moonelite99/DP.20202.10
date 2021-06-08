@@ -2,7 +2,7 @@ package controller;
 
 import common.exception.ExpiredSessionException;
 import common.exception.FailLoginException;
-import dao.user.UserDAO;
+import dao.impl.user.UserDAOImpl;
 import entity.user.User;
 import utils.Config;
 import utils.Utils;
@@ -48,7 +48,7 @@ public class AuthenticationController extends BaseController {
 */
     public void login(String email, String password) throws Exception {
         try {
-            User user = new UserDAO().authenticate(email, Utils.getInstance().md5(password));
+            User user = new UserDAOImpl().authenticate(email, Utils.getInstance().md5(password));
             if (Objects.isNull(user)) throw new FailLoginException();
             SessionInformation.getInstance().setMainUser(user);
             // Clean code : vì sử số trực tiếp trong code gây khó đọc hiểu, sau này khi muốn thay đổi sẽ phải tìm kiếm trên toàn bộ source code để thay đổi

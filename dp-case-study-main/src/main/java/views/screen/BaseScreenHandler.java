@@ -69,6 +69,10 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 	}
 	protected void setupFunctionality() throws Exception {
 	}
+
+	public String getErrorMessage(){
+		return "Error when loading resources.";
+	}
 	// Clean code : Duplicode do các class view cùng sử dụng chung khối code bên dưới nên ta viết lại thành 1 hàm trong class BaseScreenHandler để tái sử dụng
 	public void setupDataAndFunction(Object dto) throws IOException{
 		try {
@@ -76,7 +80,7 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 			setupFunctionality();
 		} catch (IOException ex) {
 			LOGGER.info(ex.getMessage());
-			PopupScreen.error("Error when loading resources.");
+			PopupScreen.error(getErrorMessage());
 		} catch (Exception ex) {
 			LOGGER.info(ex.getMessage());
 			PopupScreen.error(ex.getMessage());

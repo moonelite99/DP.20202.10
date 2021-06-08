@@ -1,21 +1,22 @@
-package dao.media;
+package dao.impl.media;
 
+import dao.abstracts.media.BookDAO;
 import entity.db.AIMSDB;
 import entity.media.Book;
-import entity.media.Media;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author
  */
-public class BookDAO extends MediaDAO {
+public class BookDAOImpl extends MediaDAOImpl implements BookDAO {
 
     @Override
-    public Media getMediaById(int id) throws SQLException {
+    public Book findById(Integer id) throws SQLException {
         String sql = "SELECT * FROM "+
                 "aims.Book " +
                 "INNER JOIN aims.Media " +
@@ -50,4 +51,26 @@ public class BookDAO extends MediaDAO {
             throw new SQLException();
         }
     }
+
+    @Override
+    public void insert(Book book) {
+
+    }
+
+    @Override
+    public void update(Book book) {
+
+    }
+
+    @Override
+    public void delete(Book book) {
+
+    }
+
+    @Override
+    public List<Book> find() {
+        return null;
+    }
+
+
 }

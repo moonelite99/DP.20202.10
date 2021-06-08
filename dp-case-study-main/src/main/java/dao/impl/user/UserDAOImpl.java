@@ -1,4 +1,4 @@
-package dao.user;
+package dao.impl.user;
 
 import entity.db.AIMSDB;
 import entity.user.User;
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 /**
  * @author
  */
-public class UserDAO {
+public class UserDAOImpl {
 
     public User authenticate(String email, String encryptedPassword) throws SQLException {
         String sql = "SELECT * FROM User " +

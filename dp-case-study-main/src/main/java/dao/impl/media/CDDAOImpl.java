@@ -1,5 +1,6 @@
-package dao.media;
+package dao.impl.media;
 
+import dao.abstracts.media.CDDAO;
 import entity.db.AIMSDB;
 import entity.media.CD;
 import entity.media.Media;
@@ -7,14 +8,15 @@ import entity.media.Media;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author
  */
-public class CDDAO extends MediaDAO {
+public class CDDAOImpl extends MediaDAOImpl implements CDDAO {
 
     @Override
-    public Media getMediaById(int id) throws SQLException {
+    public CD findById(Integer id) throws SQLException {
         String sql = "SELECT * FROM "+
                 "aims.CD " +
                 "INNER JOIN aims.Media " +
@@ -43,5 +45,25 @@ public class CDDAO extends MediaDAO {
         } else {
             throw new SQLException();
         }
+    }
+
+    @Override
+    public void insert(CD cd) {
+
+    }
+
+    @Override
+    public void update(CD cd) {
+
+    }
+
+    @Override
+    public void delete(CD cd) {
+
+    }
+
+    @Override
+    public List<CD> find() {
+        return null;
     }
 }
